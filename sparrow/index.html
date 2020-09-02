@@ -2,6 +2,7 @@
 <html>
 
     <head>
+        <title>Sparrow</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
         .container {
@@ -146,6 +147,7 @@
 
 
     <div id="userPanel" class="width1">
+        <button class="button button3" onclick="goToSite()">Back</button>
         <button class="button button3" id="setupBtn" onclick="mySwitch()">Set Up (Showing)</button>
 
 
@@ -477,6 +479,9 @@ function updateRound(){
     document.getElementById("round").innerHTML = document.getElementById("rounds").value;
 }
 
+function goToSite(){
+    window.location.href = "https://isrussell.com/";
+}
 
 </script>
 

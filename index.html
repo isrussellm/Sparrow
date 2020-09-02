@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Russell Miller</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -37,7 +37,28 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
         height: 20px; 
         float: right;
     }
+    .footer3{
+      width: 50px; 
+      height: 50px; 
+      /* border-radius: 10px; */
+      border: none;
+      float: center;
+      background: none;
+
+    }
+
+    .projectButton{
+      border: none;
+      background: none;
+    }
+
+    svg {
+    outline: none;
+    transition: transform 0.15s linear;
+    }
 </style>
+
+
 
 <body>
 
@@ -52,7 +73,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 <!-- Top menu -->
 <div class="w3-top">
   <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
-    <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
+    <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">L</div>
     <!-- <div class="w3-right w3-padding-16">Contact</div> -->
     <div class="w3-center w3-padding-16">My Projects</div>
   </div>
@@ -65,15 +86,22 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
   <div class="w3-row-padding w3-padding-16 w3-center" id="projects">
     <div class="w3-quarter">
       <img src="https://i.imgur.com/5vtOW7n.jpg" alt="Pager" style="width:100%">
-      <h3>MCU Prop</h3>
-      <p>Full functionality.</p>
-      <button class="button projects" onclick="goToSite('pager')">Learn More</button>
+      <h3>Pager Prop</h3>
+      <p>Full functionality prop from Infinity War.</p>
+      <button class="projectButton" onclick="goToSite('Pager')">    
+        <svg width="50" height="50" viewBox="0 0 38 59" tabindex="0" fill="none">       
+        <image href="file:///E:/Projects/Site%20Assets/ui%20icons/UI-Icon-set-tetrisly-com/3.SVG/24x24/ic24-arrow-circle-right.svg" height="50" width="50"/>
+      </svg></button>
     </div>
+
     <div class="w3-quarter">
       <img src="https://i.imgur.com/BBhqB3m.png" alt="Sparrow" style="width:100%">
       <h3>Tournament Score Program</h3>
       <p>Updates image in browswer. Green screened into streaming service.</p>
-      <button class="button projects" onclick="goToSite('sparrow')">Use</button>
+      <button class="projectButton" onclick="goToSite('sparrow')">    
+        <svg width="50" height="50" viewBox="0 0 38 59" tabindex="0" fill="none">       
+        <image href="file:///E:/Projects/Site%20Assets/ui%20icons/UI-Icon-set-tetrisly-com/3.SVG/24x24/ic24-arrow-circle-right.svg" height="50" width="50"/>
+      </svg></button>
     </div>
     <!-- <div class="w3-quarter">
       <img src="https://i.imgur.com/BBhqB3m.png" alt="Cherries" style="width:100%">
@@ -128,10 +156,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 
   <!-- About Section -->
   <div class="w3-container w3-padding-32 w3-center">  
-    <h3>About Me</h3><br>
+    <h3>isrussell</h3><br>
     <img src="https://pbs.twimg.com/profile_images/1297710367498543104/6WuOBvMh_400x400.jpg" alt="Me" class="w3-image" style="display:block;margin:auto" width="200" height="200"> <!--800, 533-->
     <div class="w3-padding-32">
-      <h4><b>isrussell</b></h4>
+      <h4><b>Russell Miller</b></h4>
       <h6><i>-_-_-_-</i></h6>
       <p>Honestly just curious and interesting in making stuff.</p>
     </div>
@@ -173,10 +201,23 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
       </p>
     </div> -->
 
-    <button class="button footer" onclick="socialMedia('https://twitter.com/isrussellm')">twitter</button>
-    <button class="button footer" onclick="socialMedia('https://twitter.com/isrussellm')">linkdin</button>
+    
+    
+    <button class="button footer3" onclick="socialMedia('https://twitter.com/isrussellm')">    
+      <svg width="50" height="50" viewBox="0 0 38 59" tabindex="0" fill="none">       
+      <image href="E:/Projects/Site%20Assets/ui%20icons/UI-Icon-set-tetrisly-com/3.SVG/24x24/ic24-twitter.svg" height="50" width="50"/>
+    </svg></button>
 
-    <button class="button footer2" onclick="socialMedia('https://twitter.com/isrussellm')">contact</button>
+    <button class="button footer3" onclick="socialMedia('https://www.linkedin.com/in/isrussellm/')">    
+      <svg width="50" height="50" viewBox="0 0 38 59" tabindex="0" fill="none">
+        <image href="file:///E:/Projects/Site%20Assets/ui%20icons/UI-Icon-set-tetrisly-com/3.SVG/24x24/ic24-linkedin.svg" height="50" width="50"/>
+      </svg>
+      <!-- <image href="file:///E:/Projects/Site%20Assets/ui%20icons/UI-Icon-set-tetrisly-com/3.SVG/24x24/ic24-linkedin.svg" height="50" width="50"/> -->
+  </button>
+
+
+
+    <!-- <svg src="file:///E:/Projects/Site%20Assets/ui%20icons/UI-Icon-set-tetrisly-com/3.SVG/24x24/ic24-twitter.svg"></svg> -->
   </footer>
 
 <!-- End page content -->
