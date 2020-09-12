@@ -345,6 +345,20 @@ function goToSite(pages){
     }
 }
 
+function randomProject(){
+  
+  var projectsArray = ["",""];
+  projectsArray[0]="pager";
+  projectsArray[1]="sparrow";
+  projectsArray[2]="comingsoon";
+
+  var randomNum = Math.floor((Math.random() * projectsArray.length) + 0);
+
+  goToSite(projectsArray[randomNum]);
+
+}
+
+
 function socialMedia(sMedia){
     window.location.href = sMedia;
 }
