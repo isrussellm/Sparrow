@@ -186,7 +186,7 @@
         <div class="topnav">
           <a onclick="goToSite('home')">home</a>
           <a class="active">project</a>
-          <a onclick="goToSite('comingsoon')">contact</a>
+          <a onclick="goToSite('contact')">contact</a>
         </div>
 <br>
 <div class="w3-center w3-padding" style="font-size: x-large">sparrow (in progress)</div>
@@ -535,9 +535,9 @@ function goToSite(pages){
 function randomProject(){
   
   var projectsArray = ["",""];
-  projectsArray[0]="pager";
+  projectsArray[0]="comingsoon";
   projectsArray[1]="sparrow";
-  projectsArray[2]="comingsoon";
+  // projectsArray[2]="comingsoon";
 
   var randomNum = Math.floor((Math.random() * projectsArray.length) + 0);
 

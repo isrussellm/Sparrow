@@ -31,12 +31,17 @@
       background-color: #FFFFFF;
       color: #7ACDF7;
     }
+
+    .contactForm{
+      height: auto;
+      width: auto;
+    }
     
     </style>
 
 
     <head>
-        <title>coming soon</title>
+        <title>contact</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
@@ -50,10 +55,14 @@
               <a onclick="goToSite('contact')">contact</a>
             </div>
         <!-- <button onclick="goToSite()">Back</button> -->
-        <hr>
-        <!-- <p style="margin: auto;">coming soon</p> -->
+        
+          
         <div class="w3-center w3-padding" style="font-size: x-large">coming soon</div>
+        <hr>
 
+        <div class="contactForm" style="float: auto;">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdUaS3qBjchv3bIx_Ai8cRURaxTwGAsr8re1Tt0pYbnBurG9g/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0" style="float: auto;">Loading…</iframe>
+        </div>
         <script>
             function goToSite(pages){
                 if(pages=="home"){
@@ -66,9 +75,9 @@
             function randomProject(){
             
                 var projectsArray = ["",""];
-                projectsArray[0]="pager";
+                projectsArray[0]="comingsoon";
                 projectsArray[1]="sparrow";
-                projectsArray[2]="comingsoon";
+                // projectsArray[2]="comingsoon";
 
                 var randomNum = Math.floor((Math.random() * projectsArray.length) + 0);
                 goToSite(projectsArray[randomNum]);

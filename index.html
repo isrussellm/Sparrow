@@ -9,6 +9,8 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 .w3-bar-block .w3-bar-item {padding:20px}
 </style>
+
+<!-- buttons -->
 <style>
     .button {
             background-color: #a7a7a7; 
@@ -115,7 +117,8 @@ color: rgb(0, 0, 0);
   <div class="topnav">
     <a class="active">home</a>
     <a onclick="randomProject()">project</a>
-    <a onclick="goToSite('comingsoon')">contact</a>
+    <a onclick="goToSite('contact')">contact</a>
+    <a>| this site is still in testing |</a>
   </div>
 
 <!-- Sidebar (hidden by default) -->
@@ -133,7 +136,7 @@ color: rgb(0, 0, 0);
   <hr>
 
   <!-- First Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center" id="projects">
+  <!-- <div class="w3-row-padding w3-padding-16 w3-center" id="projects">
     <div class="w3-quarter">
       <img src="https://i.imgur.com/5vtOW7n.jpg" alt="Pager" style="width:100%">
       <h3>pager prop</h3>
@@ -142,7 +145,7 @@ color: rgb(0, 0, 0);
         <svg width="50" height="50" viewBox="0 0 38 59" tabindex="0" fill="none">       
         <image href="imgs/ic24-arrow-circle-right.svg" height="50" width="50"/>
       </svg></button>
-    </div>
+    </div> -->
 
     <div class="w3-quarter">
       <img src="https://i.imgur.com/BBhqB3m.png" alt="Sparrow" style="width:100%">
@@ -154,7 +157,7 @@ color: rgb(0, 0, 0);
       </svg></button>
     </div>
 
-    <div class="w3-quarter">
+    <!-- <div class="w3-quarter">
       <img src="imgs/ic24-apps.svg" alt="Macro Pad" style="width:100%">
       <h3>macro pad</h3>
       <p>arduino based macro pad</p>
@@ -172,7 +175,7 @@ color: rgb(0, 0, 0);
         <svg width="50" height="50" viewBox="0 0 38 59" tabindex="0" fill="none">       
         <image href="imgs/ic24-arrow-circle-right.svg" height="50" width="50"/>
       </svg></button>
-    </div>
+    </div> -->
 
     <!-- <div class="w3-quarter">
       <img src="imgs/ic24-apps.svg" alt="flight sim yoke" style="width:100%">
@@ -242,7 +245,10 @@ color: rgb(0, 0, 0);
       <!-- <image href="file:///E:/Projects/Site%20Assets/ui%20icons/UI-Icon-set-tetrisly-com/3.SVG/24x24/ic24-linkedin.svg" height="50" width="50"/> -->
   </button>
 
-
+  <p>
+    site made from researching and using tons of stuff from  
+    <a href="https://www.w3schools.com/" target="_blank">w3schools</a>.
+    </p>
 
     <!-- <svg src="file:///E:/Projects/Site%20Assets/ui%20icons/UI-Icon-set-tetrisly-com/3.SVG/24x24/ic24-twitter.svg"></svg> -->
   </footer>
@@ -272,9 +278,9 @@ function goToSite(pages){
 function randomProject(){
   
   var projectsArray = ["",""];
-  projectsArray[0]="pager";
-  projectsArray[1]="sparrow";
-  projectsArray[2]="comingsoon";
+  projectsArray[0]="sparrow";
+  projectsArray[1]="comingsoon";
+  //projectsArray[2]="comingsoon";
 
   var randomNum = Math.floor((Math.random() * projectsArray.length) + 0);
 

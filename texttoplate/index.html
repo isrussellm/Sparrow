@@ -36,7 +36,7 @@
 
 
     <head>
-        <title>coming soon</title>
+        <title>text to plate</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
@@ -52,7 +52,13 @@
         <!-- <button onclick="goToSite()">Back</button> -->
         <hr>
         <!-- <p style="margin: auto;">coming soon</p> -->
-        <div class="w3-center w3-padding" style="font-size: x-large">coming soon</div>
+        <div class="w3-center w3-padding" style="font-size: x-large">text to plate</div>
+
+        <textarea id="textBox" name="w3review" rows="4" cols="50">type here</textarea>
+        <button onclick="loadPlates()"> GO </button>
+        <p id="platesHere">plates here</p>
+
+        <img id="plateImg" src="plates/and.jpg" alt="Trulli" width="500" height="333">
 
         <script>
             function goToSite(pages){
@@ -66,13 +72,19 @@
             function randomProject(){
             
                 var projectsArray = ["",""];
-                projectsArray[0]="pager";
+                projectsArray[0]="comingsoon";
                 projectsArray[1]="sparrow";
-                projectsArray[2]="comingsoon";
+                // projectsArray[2]="comingsoon";
 
                 var randomNum = Math.floor((Math.random() * projectsArray.length) + 0);
                 goToSite(projectsArray[randomNum]);
 
+            }
+
+            function loadPlates(){
+              var textBoxValue = document.getElementById("textBox").value;
+              document.getElementById("platesHere").innerHTML = textBoxValue;
+              document.getElementById("plateImg").src="plates/".concat(textBoxValue, ".jpg");
             }
 
         </script>

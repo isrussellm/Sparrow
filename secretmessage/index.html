@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to display the unicode of the first character in the string "HELLO WORLD".</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<button onclick="secondFunction()">2</button>
+<p id="demo2"></p>
+<p id="demo3"></p>
+
+
+<script>
+function myFunction() {
+  var str = "HELLO WORLD";
+  var n = str.charCodeAt(0);
+  document.getElementById("demo").innerHTML = n;
+}
+
+function secondFunction(){
+	var str = "HELLO WORLD";
+	var n = str.charCodeAt(3);
+    document.getElementById("demo2").innerHTML = n;
+    
+    var chArray = ["",""];
+    
+    
+    
+	var i;
+	for (i = 0; i < str.length; i++) {
+  		chArray[i] = str.charCodeAt(i);
+	}
+    document.getElementById("demo3").innerHTML = chArray[10];
+ }
+
+</script>
+
+</body>
+</html>
