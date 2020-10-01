@@ -238,7 +238,13 @@ body {
 
 <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
-<button onclick="loadGame()">Load</button> <br><br>
+<!-- <button onclick="loadGame()">Load</button> <br><br> -->
+<button id="setupBtn" onclick="mySwitch()">settings (showing)</button>
+<button onclick="loadGame()">load</button> <br><br>
+<div id="chgContent">
+<textarea id="players" name="players" rows="10" cols="40">add block text here. one per line.</textarea>
+</div>
+
 <div class="bingoT" id="bingoTable">
 
 
@@ -350,9 +356,9 @@ body {
   <rect id="rec5R5" width="100" height="100"/>
   <text id="btnTxt5R5" x="0" y="15" fill="black">Test</text>
 </svg>
-
-
 </div>
+          
+
 </div>
 <br>
 
@@ -376,15 +382,12 @@ body {
       <svg width="50" height="50" viewBox="0 0 38 59" tabindex="0" fill="none">
         <image href="../imgs/ic24-linkedin.svg" height="50" width="50"/>
       </svg>
-      <!-- <image href="file:///E:/Projects/Site%20Assets/ui%20icons/UI-Icon-set-tetrisly-com/3.SVG/24x24/ic24-linkedin.svg" height="50" width="50"/> -->
-  </button>
+      </button>
 
   <p>
     site made from researching and using tons of stuff from  
     <a href="https://www.w3schools.com/" target="_blank">w3schools</a>.
     </p>
-
-    <!-- <svg src="file:///E:/Projects/Site%20Assets/ui%20icons/UI-Icon-set-tetrisly-com/3.SVG/24x24/ic24-twitter.svg"></svg> -->
   </footer>
 
 <script>
@@ -528,8 +531,6 @@ function flagSet(btnNum, btnText, btnFl){
   }
 
   //btnFlag1 = chgColor(btnNum, btnText, btnFlag1);
-
-
 }
 
 function chgColor(btnNum, btnText, flagTemp){
@@ -546,51 +547,22 @@ if(flagTemp == false){
 return flagTemp;
 }
 
-// var projectsArray = ["",""];
-//   projectsArray[0]="comingsoon";
-//   projectsArray[1]="sparrow";
-
-// var bingoTexts = ["sup0","sup1","sup2"];
-// // bingoTexts[0] = "sup0";
-// // bingoTexts[1] = "sup1";
-// // bingoTexts[2] = "sup2";
-// // bingoTexts[3] = "sup3";
-// // bingoTexts[4] = "sup4";
-
-// var btnNames = ["",""];
-// btnNames[0] = "btnTxt1R1";
-// btnNames[1] = "btnTxt2R1";
-// btnNames[2] = "btnTxt3R1";
-// btnNames[3] = "btnTxt4R1";
-// btnNames[4] = "btnTxt5R1";
 
 function loadGame(){
 var bingoTexts = ["",""];
-bingoTexts[0] = "shut up";
-bingoTexts[1] = "clown";
-bingoTexts[2] = "sleepy";
-bingoTexts[3] = "left";
-bingoTexts[4] = "right";
-bingoTexts[5] = "orange";
-bingoTexts[6] = "sup6";
-bingoTexts[7] = "sup7";
-bingoTexts[8] = "sup8";
-bingoTexts[9] = "sup9";
-bingoTexts[10] = "sup10";
-bingoTexts[11] = "sup11";
-bingoTexts[12] = "sup12";
-bingoTexts[13] = "sup13";
-bingoTexts[14] = "sup14";
-bingoTexts[15] = "sup15";
-bingoTexts[16] = "sup16";
-bingoTexts[17] = "sup17";
-bingoTexts[18] = "sup18";
-bingoTexts[19] = "sup20";
-bingoTexts[20] = "sup20";
-bingoTexts[21] = "sup21";
-bingoTexts[22] = "sup22";
-bingoTexts[23] = "sup23";
-bingoTexts[24] = "sup24";
+var exNames = document.getElementById("players").value;
+var options = new Array();
+options = exNames.split("\n"); 
+
+for (var i = 0; i < options.length; ++i) {
+// Append the element to the end of Array list
+    var el = document.createElement("option");
+    el.text = options[i];
+    el.value = options[i];
+    //p1.add(el);
+    bingoTexts[i] = options[i];
+        
+}
 
 
 var btnNames = ["",""];
@@ -633,16 +605,6 @@ var ctr = bingoTexts.length, temp, index;
         bingoTexts[index] = temp;
     }
 
-
-
-  // var tempVal = document.getElementById("btnTxt1R1");
-  // tempVal.textContent = bingoTexts[1];
-//   var i;
-// for (i = 0; i < btnNames.length; i++) {
-//   document.getElementById("btnTxt1R1").innerHTML = "a";
-// }
-//var a = 0;
-//var tempName = bingoTexts[0];
 document.getElementById(btnNames[0]).innerHTML = bingoTexts[0];
 document.getElementById(btnNames[1]).innerHTML = bingoTexts[1];
 document.getElementById(btnNames[2]).innerHTML = bingoTexts[2];
@@ -672,6 +634,20 @@ document.getElementById(btnNames[11]).innerHTML = bingoTexts[21];
 document.getElementById(btnNames[22]).innerHTML = bingoTexts[22];
 document.getElementById(btnNames[23]).innerHTML = bingoTexts[23];
 document.getElementById(btnNames[24]).innerHTML = bingoTexts[24];
+}
+
+
+function mySwitch() {
+  var x = document.getElementById("chgContent");
+  var xName = document.getElementById("setupBtn");
+
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    xName.innerHTML = "settings (showing)";
+  } else {
+    x.style.display = "none";
+    xName.innerHTML = "settings (not showing)";
+  }
 }
 
 </script>
