@@ -5,30 +5,62 @@
   </head>
   <style>
     iframe{
+      /* height: auto; */
       width: 560px;
+      /* height: 0; */
+      /* min aspect-ratio: 16/9; */
       height: 315px;
-
-
+      
+      
     }
 
     
   </style>
   <body>
 
-    <button onclick="hidePlayer('player1')">1</button>
-    <button>2</button>
-    <button>3</button>
-    <button>4</button>
-    <button>5</button>
-    <button>6</button>
-    <button>7</button>
-    <button>8</button>
-    <button>9</button>
-    <button>10</button>
+    <button id="settingsBtn" onclick="mySwitch()">Settings (Showing)</button><br>
+    <div id="settings">
 
+      <label>Number of players: </label>
+      <select id="playerVis" name="playerVis">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      <button onclick="hidePlayer()">Update</button>
 <br><br>
+      <label>Change Player: </label>
+      <select id="videoSizeDDNum" name="videoSizeDDNum">
+        <option value="All">All</option>
+        <option value="player1">1</option>
+        <option value="player2">2</option>
+        <option value="player3">3</option>
+        <option value="player4">4</option>
+        <option value="player5">5</option>
+        <option value="player6">6</option>
+        <option value="player7">7</option>
+        <option value="player8">8</option>
+        <option value="player9">9</option>
+        <option value="player10">10</option>
+      </select>
+
+      <label>Size: </label>
+      <select id="videoSizeDD" name="videoSizeDD">
+        <option value="0">Small</option>
+        <option value="1">Medium</option>
+        <option value="2">Large</option>
+      </select>
+      <button onclick="videoSize()">Update</button>
+      <br><br>
     
-    <label for="fname">Streamer Name/URL: </label>
+    <label for="streamer">Streamer Name/URL: </label>
     <input type="text" id="streamer" name="streamer">
     <select id="platforms" name="platforms">
       <option value="Twitch">Twitch</option>
@@ -49,27 +81,27 @@
     <button onclick="switchPlayer()">GO</button>
     <br>
     <br>
+    </div><br>
 
-    <iframe id="player1" src="https://www.youtube.com/embed/ixc1Z6xqOQY?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player2" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player3" src="https://player.twitch.tv/?channel=sykkuno&parent=isrussell.com" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player4" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player5" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player6" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <!-- <iframe id="player7" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player8" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player9" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player10" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-     -->
     
-    <!-- <button onclick="switchPlayer()">GO</button>  -->
 
-    <!-- <iframe  src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe> -->
 
-    <!-- <iframe id="player3" src="https://player.twitch.tv/?channel=sykkuno&parent=isrussell.com" frameborder="0" allowfullscreen="true" scrolling="no"></iframe> -->
-    <!-- <iframe src="https://player.twitch.tv/?channel=sykkuno&parent=https://localhost" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe> -->
-    <!-- <iframe src="https://player.twitch.tv/?channel=sykkuno&parent=https://localhost" parent="https://localhost" height="720" width="1280" frameborder="0" scrolling="no" allowfullscreen="true" /> -->
-  
+
+    
+    <iframe id="player1" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    
+    <iframe id="player2" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player3" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player4" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player5" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player6" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player7" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player8" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player9" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player10" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    
+    
+
     <!-- <p id="testString">test string</p> -->
 
     <script>
@@ -102,27 +134,117 @@
       }
       
 
+      function hidePlayer(){
+         var x1 = document.getElementById("player1");
+         var x2 = document.getElementById("player2");
+         var x3 = document.getElementById("player3");
+         var x4 = document.getElementById("player4");
+         var x5 = document.getElementById("player5");
+         var x6 = document.getElementById("player6");
+         var x7 = document.getElementById("player7");
+         var x8 = document.getElementById("player8");
+         var x9 = document.getElementById("player9");
+         var x10 = document.getElementById("player10");
+
+         var xArray = [x1, x2, x3, x4, x5, x6, x7, x8, x9, x10];
+
+        var visOption = document.getElementById("playerVis").value;
+        var visNum = parseInt(visOption);
+        
+        //xArray[visNum].style.display = "none";
+        var diff = xArray.length - visNum;
+    
+        var i;
 
 
+        for (i = 0; i < xArray.length; i++) {
+          xArray[i].style.display = "inline";
+        }
 
-      function hidePlayer(person){
-        // var x = document.getElementById(person);
+        for (i = visNum; i < xArray.length; i++) {
+          xArray[i].style.display = "none";
+          xArray[i].src = "https://www.youtube.com/embed/1?autoplay=0";
+        }
+      }
+
+      function videoSize(){
+        // var widthS = "325px";
+        // var heightS = "183px"
+
+        var widthS = window.innerWidth;
+        var heightS = window.innerHeight;
+
+        var widthM = "560px";
+        var heightM = "315px"
+
+        var widthL = "750px";
+        var heightL = "422px"
+
+        var widthSize = ["325px","560px","750px"];
+        var heightSize = ["182px","315px","422px"];
+
+        var sizeOfArray = parseInt(document.getElementById("videoSizeDD").value);
+        var playerSel = document.getElementById("videoSizeDDNum").value;
 
 
+        if(playerSel == "All"){
+
+          document.getElementById("player1").style.width = widthSize[sizeOfArray];
+          document.getElementById("player1").style.height = heightSize[sizeOfArray];
+
+          document.getElementById("player2").style.width = widthSize[sizeOfArray];
+          document.getElementById("player2").style.height = heightSize[sizeOfArray];
+
+          document.getElementById("player3").style.width = widthSize[sizeOfArray];
+          document.getElementById("player3").style.height = heightSize[sizeOfArray];
+
+          document.getElementById("player4").style.width = widthSize[sizeOfArray];
+          document.getElementById("player4").style.height = heightSize[sizeOfArray];
+
+          document.getElementById("player5").style.width = widthSize[sizeOfArray];
+          document.getElementById("player5").style.height = heightSize[sizeOfArray];
+
+          document.getElementById("player6").style.width = widthSize[sizeOfArray];
+          document.getElementById("player6").style.height = heightSize[sizeOfArray];
+
+          document.getElementById("player7").style.width = widthSize[sizeOfArray];
+          document.getElementById("player7").style.height = heightSize[sizeOfArray];
+
+          document.getElementById("player8").style.width = widthSize[sizeOfArray];
+          document.getElementById("player8").style.height = heightSize[sizeOfArray];
+
+          document.getElementById("player9").style.width = widthSize[sizeOfArray];
+          document.getElementById("player9").style.height = heightSize[sizeOfArray];
+
+          document.getElementById("player10").style.width = widthSize[sizeOfArray];
+          document.getElementById("player10").style.height = heightSize[sizeOfArray];
+        }else{
+          document.getElementById(playerSel).style.width = widthSize[sizeOfArray];
+          document.getElementById(playerSel).style.height = heightSize[sizeOfArray];
+
+        }
+
+      }
+
+      function videoSizeOne(){
+        
+        videoSize();
       }
 
       function mySwitch() {
-      var x = document.getElementById("setupPanel");
-      var xName = document.getElementById("setupBtn");
+      var x = document.getElementById("settings");
+      var xName = document.getElementById("settingsBtn");
 
       if (x.style.display === "none") {
         x.style.display = "block";
-        xName.innerHTML = "Set Up (Showing)";
+        xName.innerHTML = "Settings (Showing)";
       } else {
         x.style.display = "none";
-        xName.innerHTML = "Set Up (Not Showing)";
+        xName.innerHTML = "Settings (Not Showing)";
       }
-}
+      }
+
+
 
     </script>
 
