@@ -1,10 +1,133 @@
 <!DOCTYPE html>
 <html>
+  <head>
+
+  </head>
+  <style>
+    iframe{
+      width: 560px;
+      height: 315px;
+
+
+    }
+
+    
+  </style>
   <body>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ixc1Z6xqOQY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://youtube.com/embed/gwf-Ejoic1M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/EUFvcDqyNVQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   
-    <iframe src="https://player.twitch.tv/?channel=sykkuno&parent=isrussell.com" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+
+    <button onclick="hidePlayer('player1')">1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+    <button>10</button>
+
+<br><br>
+    
+    <label for="fname">Streamer Name/URL: </label>
+    <input type="text" id="streamer" name="streamer">
+    <select id="platforms" name="platforms">
+      <option value="Twitch">Twitch</option>
+      <option value="YouTube">YouTube</option>
+    </select>
+    <select id="player" name="player">
+      <option value="player1">1</option>
+      <option value="player2">2</option>
+      <option value="player3">3</option>
+      <option value="player4">4</option>
+      <option value="player5">5</option>
+      <option value="player6">6</option>
+      <option value="player7">7</option>
+      <option value="player8">8</option>
+      <option value="player9">9</option>
+      <option value="player10">10</option>
+    </select>
+    <button onclick="switchPlayer()">GO</button>
+    <br>
+    <br>
+
+    <iframe id="player1" src="https://www.youtube.com/embed/ixc1Z6xqOQY?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player2" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player3" src="https://player.twitch.tv/?channel=sykkuno&parent=isrussell.com" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player4" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player5" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player6" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <!-- <iframe id="player7" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player8" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player9" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <iframe id="player10" src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+     -->
+    
+    <!-- <button onclick="switchPlayer()">GO</button>  -->
+
+    <!-- <iframe  src="https://www.youtube.com/embed/EUFvcDqyNVQ?autoplay=1" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe> -->
+
+    <!-- <iframe id="player3" src="https://player.twitch.tv/?channel=sykkuno&parent=isrussell.com" frameborder="0" allowfullscreen="true" scrolling="no"></iframe> -->
+    <!-- <iframe src="https://player.twitch.tv/?channel=sykkuno&parent=https://localhost" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe> -->
+    <!-- <iframe src="https://player.twitch.tv/?channel=sykkuno&parent=https://localhost" parent="https://localhost" height="720" width="1280" frameborder="0" scrolling="no" allowfullscreen="true" /> -->
+  
+    <!-- <p id="testString">test string</p> -->
+
+    <script>
+    
+      function switchPlayer(){
+        var platChoice = document.getElementById("platforms").value;
+        var streamerName = document.getElementById("streamer").value;
+
+        var url1 = "https://player.twitch.tv/?channel=";
+        var url2 = streamerName;
+        
+        var url3 = "&parent=isrussell.com";
+
+
+        if(platChoice == "YouTube"){
+          url1 = "https://www.youtube.com/embed/";
+          url2 = breakURL(streamerName);
+          url3 = "?autoplay=1";
+        }
+        var playerID = document.getElementById("player").value;
+        document.getElementById(playerID).src  = url1.concat(url2, url3);
+      }
+
+      function breakURL(allURL){
+        var endURL = allURL;
+        var arrayURL = allURL.split('/');
+        endURL = arrayURL.pop();
+        //document.getElementById("testString").innerHTML = endURL;
+        return endURL;
+      }
+      
+
+
+
+
+      function hidePlayer(person){
+        // var x = document.getElementById(person);
+
+
+      }
+
+      function mySwitch() {
+      var x = document.getElementById("setupPanel");
+      var xName = document.getElementById("setupBtn");
+
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        xName.innerHTML = "Set Up (Showing)";
+      } else {
+        x.style.display = "none";
+        xName.innerHTML = "Set Up (Not Showing)";
+      }
+}
+
+    </script>
+
   </body>
+
+  
 </html>
+
