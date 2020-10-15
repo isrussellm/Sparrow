@@ -5,23 +5,48 @@
   </head>
   <style>
     iframe{
-      /* height: auto; */
       width: 560px;
-      /* height: 0; */
-      /* min aspect-ratio: 16/9; */
       height: 315px;
-      
-      
     }
 
+    label{
+      color: white;
+    }
+
+    ul.nav {
+    margin:0;
+    padding:0;
+    list-style:none;
+    height:36px; line-height:36px;
+    background:#000000; /* you can change the backgorund color here. */
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:13px;
+    }
+    ul.nav li {
+        border-right:1px solid #ffffff; /* you can change the border color matching to your background color */
+        float:left;
+    }
+    ul.nav a {
+        display:block;
+        padding:0 28px;
+        color:#ffffff;
+        text-decoration:none;
+    }
+    ul.nav a:hover,
+    ul.nav li.current a {
+        background:#7c7c7c;
+    }
     
   </style>
-  <body>
+  <body style="background-color:#383838;">
 
-    <button id="settingsBtn" onclick="mySwitch()">Settings (Showing)</button><br>
+    <ul class="nav">
+      <!-- <li><a href="#">Home</a></li> -->
+      <li><a onclick="mySwitch()">Settings</a></li>
+    </ul><br>
     <div id="settings">
 
-      <label>Number of players: </label>
+      <label id="lbl1">Number of players: </label>
       <select id="playerVis" name="playerVis">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -32,11 +57,11 @@
         <option value="7">7</option>
         <option value="8">8</option>
         <option value="9">9</option>
-        <option value="10">10</option>
+        <option value="10" selected="selected">10</option>
       </select>
       <button onclick="hidePlayer()">Update</button>
 <br><br>
-      <label>Change Player: </label>
+      <label id="lbl2">Change Player: </label>
       <select id="videoSizeDDNum" name="videoSizeDDNum">
         <option value="All">All</option>
         <option value="player1">1</option>
@@ -51,16 +76,16 @@
         <option value="player10">10</option>
       </select>
 
-      <label>Size: </label>
+      <label id="lbl3">Size: </label>
       <select id="videoSizeDD" name="videoSizeDD">
         <option value="0">Small</option>
-        <option value="1">Medium</option>
+        <option value="1" selected="selected">Medium</option>
         <option value="2">Large</option>
       </select>
       <button onclick="videoSize()">Update</button>
       <br><br>
     
-    <label for="streamer">Streamer Name/URL: </label>
+    <label id="lbl4">Streamer Name/URL: </label>
     <input type="text" id="streamer" name="streamer">
     <select id="platforms" name="platforms">
       <option value="Twitch">Twitch</option>
@@ -79,8 +104,11 @@
       <option value="player10">10</option>
     </select>
     <button onclick="switchPlayer()">GO</button>
-    <br>
-    <br>
+    <br><br>
+    <label id="lbl5">Theme: </label>
+    <button onclick="chgTheme('#383838', 'white')">Dark</button>
+    <button onclick="chgTheme('#ffffff','black')">Light</button>
+    <br><br>
     </div><br>
 
     
@@ -89,7 +117,6 @@
 
     
     <iframe id="player1" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    
     <iframe id="player2" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
     <iframe id="player3" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
     <iframe id="player4" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
@@ -233,15 +260,26 @@
 
       function mySwitch() {
       var x = document.getElementById("settings");
-      var xName = document.getElementById("settingsBtn");
+      // var xName = document.getElementById("settingsBtn");
 
       if (x.style.display === "none") {
         x.style.display = "block";
-        xName.innerHTML = "Settings (Showing)";
+        // xName.innerHTML = "Settings (Showing)";
       } else {
         x.style.display = "none";
-        xName.innerHTML = "Settings (Not Showing)";
+        // xName.innerHTML = "Settings (Not Showing)";
       }
+      }
+
+      function chgTheme(chTheme, chTheme2){
+        document.body.style.backgroundColor= chTheme;
+        document.getElementById("lbl1").style.color = chTheme2;
+        document.getElementById("lbl2").style.color = chTheme2;
+        document.getElementById("lbl3").style.color = chTheme2;
+        document.getElementById("lbl4").style.color = chTheme2;
+        document.getElementById("lbl5").style.color = chTheme2;
+
+        
       }
 
 
