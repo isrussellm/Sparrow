@@ -3,50 +3,20 @@
   <head>
 
   </head>
-  <style>
-    iframe{
-      width: 560px;
-      height: 315px;
-    }
 
-    label{
-      color: white;
-    }
+  <link rel="stylesheet" href="styles.css">  
 
-    ul.nav {
-    margin:0;
-    padding:0;
-    list-style:none;
-    height:36px; line-height:36px;
-    background:#000000; /* you can change the backgorund color here. */
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:13px;
-    }
-    ul.nav li {
-        border-right:1px solid #ffffff; /* you can change the border color matching to your background color */
-        float:left;
-    }
-    ul.nav a {
-        display:block;
-        padding:0 28px;
-        color:#ffffff;
-        text-decoration:none;
-    }
-    ul.nav a:hover,
-    ul.nav li.current a {
-        background:#7c7c7c;
-    }
-    
-  </style>
   <body style="background-color:#383838;">
 
     <ul class="nav">
       <!-- <li><a href="#">Home</a></li> -->
-      <li><a onclick="mySwitch()">Settings</a></li>
+      <li><a onclick="mySwitch('playerPanel')">Players</a></li>
+      <li><a onclick="mySwitch('settings')">Settings</a></li>
     </ul><br>
+
     <div id="settings">
 
-      <label id="lbl1">Number of players: </label>
+      <label id="lbl1">Players: </label>
       <select id="playerVis" name="playerVis">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -61,9 +31,62 @@
       </select>
       <button onclick="hidePlayer()">Update</button>
 <br><br>
-      <label id="lbl2">Change Player: </label>
-      <select id="videoSizeDDNum" name="videoSizeDDNum">
-        <option value="All">All</option>
+
+
+<input type="radio" id="rbTemplate" name="rbtnVidSize" value="template" onchange="videoSize('divTemplate','divManual')">
+  <label for="rbTemplate">Template Size</label>
+  <input type="radio" id="rbtnVidSize" name="rbtnVidSize" value="manual" checked="checked" onchange="videoSize('divManual', 'divTemplate')">
+  <label for="rbtnVidSize" onchange="">Manual Size</label> <br>
+  
+  <div id="divManual">
+  <label id="lbl7">Player: </label>
+  <select id="videoSizeDDNum" name="videoSizeDDNum">
+    <option value="All">All</option>
+    <option value="player1">1</option>
+    <option value="player2">2</option>
+    <option value="player3">3</option>
+    <option value="player4">4</option>
+    <option value="player5">5</option>
+    <option value="player6">6</option>
+    <option value="player7">7</option>
+    <option value="player8">8</option>
+    <option value="player9">9</option>
+    <option value="player10">10</option>
+  </select>
+
+    
+      <!-- <label for="lbl6"></label> -->
+
+      <!-- <label id="lbl3">Size: </label> -->
+      <select id="videoSizeDD" name="videoSizeDD">
+        <option value="0">Small</option>
+        <option value="1" selected="selected">Medium</option>
+        <option value="2">Large</option>
+      </select>
+      <button onclick="videoSize()">Update</button>
+      </div>
+
+  <div id="divTemplate">
+    <p>coming soon</p>
+  </div>
+
+      <br><br>
+
+    <label id="lbl5">Theme: </label>
+    <button onclick="chgTheme('#383838', 'white')">Dark</button>
+    <button onclick="chgTheme('#ffffff','black')">Light</button>
+    <br><br>
+  </div>
+
+    <div id="playerPanel">
+      <label id="lbl4">Streamer Name/URL: </label>
+      <input type="text" id="streamer" name="streamer">
+      <select id="platforms" name="platforms">
+        <option value="Twitch">Twitch</option>
+        <option value="YouTube">YouTube</option>
+      </select>
+
+      <select id="player" name="player" onchange="highlightPlayer()">
         <option value="player1">1</option>
         <option value="player2">2</option>
         <option value="player3">3</option>
@@ -75,49 +98,44 @@
         <option value="player9">9</option>
         <option value="player10">10</option>
       </select>
+      <button onclick="switchPlayer()">Update</button><br><br>
 
-      <label id="lbl3">Size: </label>
-      <select id="videoSizeDD" name="videoSizeDD">
-        <option value="0">Small</option>
-        <option value="1" selected="selected">Medium</option>
-        <option value="2">Large</option>
-      </select>
-      <button onclick="videoSize()">Update</button>
-      <br><br>
-    
-    <label id="lbl4">Streamer Name/URL: </label>
-    <input type="text" id="streamer" name="streamer">
-    <select id="platforms" name="platforms">
-      <option value="Twitch">Twitch</option>
-      <option value="YouTube">YouTube</option>
-    </select>
-    <select id="player" name="player">
-      <option value="player1">1</option>
-      <option value="player2">2</option>
-      <option value="player3">3</option>
-      <option value="player4">4</option>
-      <option value="player5">5</option>
-      <option value="player6">6</option>
-      <option value="player7">7</option>
-      <option value="player8">8</option>
-      <option value="player9">9</option>
-      <option value="player10">10</option>
-    </select>
-    <button onclick="switchPlayer()">GO</button>
-    <br><br>
-    <label id="lbl5">Theme: </label>
-    <button onclick="chgTheme('#383838', 'white')">Dark</button>
-    <button onclick="chgTheme('#ffffff','black')">Light</button>
-    <br><br>
-    </div><br>
 
-    
+    </div>
 
 
 
-    
-    <iframe id="player1" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player2" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+    <div class= "keep-aspect" id="player1Div">
+    <iframe id="player1" src="https://www.youtube.com/embed/1?autoplay=0" width="550" height="281" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+  </div>
+  <div class="keep-aspect" id="player2Div">
+    <iframe id="player2" src="https://www.youtube.com/embed/1?autoplay=0" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+  </div>
+  <div class="keep-aspect" id="player3Div">
+    <iframe id="player3" src="https://www.youtube.com/embed/1?autoplay=0" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+  </div>
+  <div class="keep-aspect" id="player4Div">
+    <iframe id="player4" src="https://www.youtube.com/embed/1?autoplay=0" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+  </div>
+  <div class="keep-aspect" id="player5Div">
+    <iframe id="player5" src="https://www.youtube.com/embed/1?autoplay=0" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+  </div>
+  <div class="keep-aspect" id="player6Div">
+    <iframe id="player6" src="https://www.youtube.com/embed/1?autoplay=0" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+  </div>
+  <div class="keep-aspect" id="player7Div">
+    <iframe id="player7" src="https://www.youtube.com/embed/1?autoplay=0" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+  </div>
+  <div class="keep-aspect" id="player8Div">
+    <iframe id="player8" src="https://www.youtube.com/embed/1?autoplay=0" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+  </div>
+  <div class="keep-aspect" id="player9Div">
+    <iframe id="player9" src="https://www.youtube.com/embed/1?autoplay=0" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+  </div>
+  <div class="keep-aspect" id="player10Div">
+    <iframe id="player10" src="https://www.youtube.com/embed/1?autoplay=0" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
+  </div>
+<!--     
     <iframe id="player3" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
     <iframe id="player4" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
     <iframe id="player5" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
@@ -126,7 +144,7 @@
     <iframe id="player8" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
     <iframe id="player9" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
     <iframe id="player10" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    
+     -->
     
 
     <!-- <p id="testString">test string</p> -->
@@ -150,6 +168,7 @@
         }
         var playerID = document.getElementById("player").value;
         document.getElementById(playerID).src  = url1.concat(url2, url3);
+        resetHighlight();
       }
 
       function breakURL(allURL){
@@ -162,7 +181,41 @@
       
 
       function hidePlayer(){
-         var x1 = document.getElementById("player1");
+         var x1 = document.getElementById("player1Div");
+         var x2 = document.getElementById("player2Div");
+         var x3 = document.getElementById("player3Div");
+         var x4 = document.getElementById("player4Div");
+         var x5 = document.getElementById("player5Div");
+         var x6 = document.getElementById("player6Div");
+         var x7 = document.getElementById("player7Div");
+         var x8 = document.getElementById("player8Div");
+         var x9 = document.getElementById("player9Div");
+         var x10 = document.getElementById("player10Div");
+
+         var xArray = [x1, x2, x3, x4, x5, x6, x7, x8, x9, x10];
+
+        var visOption = document.getElementById("playerVis").value;
+        var visNum = parseInt(visOption);
+        
+        //xArray[visNum].style.display = "none";
+        var diff = xArray.length - visNum;
+    
+        var i;
+
+
+        for (i = 0; i < xArray.length; i++) {
+          xArray[i].style.display = "inline";
+        }
+
+        for (i = visNum; i < xArray.length; i++) {
+          xArray[i].style.display = "none";
+          //xArray[i].src = "https://www.youtube.com/embed/1?autoplay=0";
+          stopPlayer();
+        }
+      }
+
+      function stopPlayer(){
+        var x1 = document.getElementById("player1");
          var x2 = document.getElementById("player2");
          var x3 = document.getElementById("player3");
          var x4 = document.getElementById("player4");
@@ -185,13 +238,21 @@
 
 
         for (i = 0; i < xArray.length; i++) {
-          xArray[i].style.display = "inline";
+          //xArray[i].style.display = "inline";
         }
 
         for (i = visNum; i < xArray.length; i++) {
-          xArray[i].style.display = "none";
+          //xArray[i].style.display = "none";
           xArray[i].src = "https://www.youtube.com/embed/1?autoplay=0";
         }
+
+
+      }
+
+      function videoSize2(){
+        document.getElementById("player1Div").style.width = "33%";
+        document.getElementById("player1Div").style.paddingTop = "20%";
+        //document.getElementById("player2").style.height = heightSize[sizeOfArray];
       }
 
       function videoSize(){
@@ -205,49 +266,50 @@
         var heightM = "315px"
 
         var widthL = "750px";
-        var heightL = "422px"
+        var heightL = "422px";
 
-        var widthSize = ["325px","560px","750px"];
-        var heightSize = ["182px","315px","422px"];
+        var widthSize = ["24%","33%","48%"];
+        var heightSize = ["14%","18%","28%"];
 
         var sizeOfArray = parseInt(document.getElementById("videoSizeDD").value);
         var playerSel = document.getElementById("videoSizeDDNum").value;
+        // var playerDiv = "player".concat(playerSel,"Div")
 
 
         if(playerSel == "All"){
 
-          document.getElementById("player1").style.width = widthSize[sizeOfArray];
-          document.getElementById("player1").style.height = heightSize[sizeOfArray];
+          document.getElementById("player1Div").style.width = widthSize[sizeOfArray];
+          document.getElementById("player1Div").style.paddingTop = heightSize[sizeOfArray];
 
-          document.getElementById("player2").style.width = widthSize[sizeOfArray];
-          document.getElementById("player2").style.height = heightSize[sizeOfArray];
+          document.getElementById("player2Div").style.width = widthSize[sizeOfArray];
+          document.getElementById("player2Div").style.paddingTop = heightSize[sizeOfArray];
 
-          document.getElementById("player3").style.width = widthSize[sizeOfArray];
-          document.getElementById("player3").style.height = heightSize[sizeOfArray];
+          document.getElementById("player3Div").style.width = widthSize[sizeOfArray];
+          document.getElementById("player3Div").style.paddingTop = heightSize[sizeOfArray];
 
-          document.getElementById("player4").style.width = widthSize[sizeOfArray];
-          document.getElementById("player4").style.height = heightSize[sizeOfArray];
+          document.getElementById("player4Div").style.width = widthSize[sizeOfArray];
+          document.getElementById("player4Div").style.paddingTop = heightSize[sizeOfArray];
 
-          document.getElementById("player5").style.width = widthSize[sizeOfArray];
-          document.getElementById("player5").style.height = heightSize[sizeOfArray];
+          document.getElementById("player5Div").style.width = widthSize[sizeOfArray];
+          document.getElementById("player5Div").style.paddingTop = heightSize[sizeOfArray];
 
-          document.getElementById("player6").style.width = widthSize[sizeOfArray];
-          document.getElementById("player6").style.height = heightSize[sizeOfArray];
+          document.getElementById("player6Div").style.width = widthSize[sizeOfArray];
+          document.getElementById("player6Div").style.paddingTop = heightSize[sizeOfArray];
 
-          document.getElementById("player7").style.width = widthSize[sizeOfArray];
-          document.getElementById("player7").style.height = heightSize[sizeOfArray];
+          document.getElementById("player7Div").style.width = widthSize[sizeOfArray];
+          document.getElementById("player7Div").style.paddingTop = heightSize[sizeOfArray];
 
-          document.getElementById("player8").style.width = widthSize[sizeOfArray];
-          document.getElementById("player8").style.height = heightSize[sizeOfArray];
+          document.getElementById("player8Div").style.width = widthSize[sizeOfArray];
+          document.getElementById("player8Div").style.paddingTop = heightSize[sizeOfArray];
 
-          document.getElementById("player9").style.width = widthSize[sizeOfArray];
-          document.getElementById("player9").style.height = heightSize[sizeOfArray];
+          document.getElementById("player9Div").style.width = widthSize[sizeOfArray];
+          document.getElementById("player9Div").style.paddingTop = heightSize[sizeOfArray];
 
-          document.getElementById("player10").style.width = widthSize[sizeOfArray];
-          document.getElementById("player10").style.height = heightSize[sizeOfArray];
+          document.getElementById("player10Div").style.width = widthSize[sizeOfArray];
+          document.getElementById("player10Div").style.paddingTop = heightSize[sizeOfArray];
         }else{
-          document.getElementById(playerSel).style.width = widthSize[sizeOfArray];
-          document.getElementById(playerSel).style.height = heightSize[sizeOfArray];
+          document.getElementById(playerSel.concat("Div")).style.width = widthSize[sizeOfArray]
+          document.getElementById(playerSel.concat("Div")).style.paddingTop = heightSize[sizeOfArray];
 
         }
 
@@ -258,8 +320,8 @@
         videoSize();
       }
 
-      function mySwitch() {
-      var x = document.getElementById("settings");
+      function mySwitch(panel) {
+      var x = document.getElementById(panel);
       // var xName = document.getElementById("settingsBtn");
 
       if (x.style.display === "none") {
@@ -282,9 +344,54 @@
         
       }
 
+      function highlightPlayer(){
 
+        resetHighlight();
+              
+        var borderDef = "2px solid blue";
+
+        var tempVal = document.getElementById("player").value;
+        document.getElementById(tempVal.concat("Div")).style.border = borderDef;
+
+      }
+
+      function resetHighlight () {
+
+        var borderDef = "2px solid #383838";
+
+        document.getElementById("player1Div").style.border = borderDef;
+        document.getElementById("player2Div").style.border = borderDef;
+        document.getElementById("player3Div").style.border = borderDef;
+        document.getElementById("player4Div").style.border = borderDef;
+        document.getElementById("player5Div").style.border = borderDef;
+        document.getElementById("player6Div").style.border = borderDef;
+        document.getElementById("player7Div").style.border = borderDef;
+        document.getElementById("player8Div").style.border = borderDef;
+        document.getElementById("player9Div").style.border = borderDef;
+        document.getElementById("player10Div").style.border = borderDef;
+
+      }
+
+      function videoSize(panel, panel2) {
+      var x = document.getElementById(panel);
+      var y = document.getElementById(panel2);
+      // var xName = document.getElementById("settingsBtn");
+
+      if (x.style.display === "none") {
+        y.style.display = "none";
+        x.style.display = "block";
+        // xName.innerHTML = "Settings (Showing)";
+      } else {
+        x.style.display = "block";
+        y.style.display = "none";
+        // xName.innerHTML = "Settings (Not Showing)";
+      }
+      }
 
     </script>
+
+
+
 
   </body>
 
