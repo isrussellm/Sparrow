@@ -33,9 +33,9 @@
 <br><br>
 
 
-<input type="radio" id="rbTemplate" name="rbtnVidSize" value="template" onchange="videoSize('divTemplate','divManual')">
+<input type="radio" id="rbTemplate" name="rbtnVidSize" value="template" onchange="videoSizeHide('divTemplate','divManual')">
   <label for="rbTemplate">Template Size</label>
-  <input type="radio" id="rbtnVidSize" name="rbtnVidSize" value="manual" checked="checked" onchange="videoSize('divManual', 'divTemplate')">
+  <input type="radio" id="rbtnVidSize" name="rbtnVidSize" value="manual" checked="checked" onchange="videoSizeHide('divManual', 'divTemplate')">
   <label for="rbtnVidSize" onchange="">Manual Size</label> <br>
   
   <div id="divManual">
@@ -372,7 +372,7 @@
 
       }
 
-      function videoSize(panel, panel2) {
+      function videoSizeHide(panel, panel2) {
       var x = document.getElementById(panel);
       var y = document.getElementById(panel2);
       // var xName = document.getElementById("settingsBtn");
