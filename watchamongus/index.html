@@ -10,13 +10,15 @@
 
     <ul class="nav">
       <!-- <li><a href="#">Home</a></li> -->
-      <li><a onclick="mySwitch('playerPanel')">Players</a></li>
-      <li><a onclick="mySwitch('settings')">Settings</a></li>
+      <li><a onclick="menuBarSelect('playerPanel','updatesPanel','settings')">Players</a></li>
+      <li><a onclick="menuBarSelect('settings','playerPanel','updatesPanel')">Settings</a></li>
+      <li><a onclick="menuBarSelect('updatesPanel','playerPanel','settings')">Updates</a></li>
+      <img src="watchamonguslogo.png" alt="sorrymate" class="navLogo">
     </ul><br>
 
-    <div id="settings">
+    <div id="settings" style="display:none">
 
-      <label id="lbl1">Players: </label>
+      <label id="lbl1">Number of Players: </label>
       <select id="playerVis" name="playerVis">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -29,14 +31,13 @@
         <option value="9">9</option>
         <option value="10" selected="selected">10</option>
       </select>
-      <button onclick="hidePlayer()">Update</button>
 <br><br>
 
 
-<input type="radio" id="rbTemplate" name="rbtnVidSize" value="template" onchange="videoSizeHide('divTemplate','divManual')">
-  <label for="rbTemplate">Template Size</label>
-  <input type="radio" id="rbtnVidSize" name="rbtnVidSize" value="manual" checked="checked" onchange="videoSizeHide('divManual', 'divTemplate')">
-  <label for="rbtnVidSize" onchange="">Manual Size</label> <br>
+  <input type="radio" id="rbTemplate" name="rbtnVidSize" value="template" onchange="radioPanelHide('divTemplate','divManual')">
+  <label id="lbl8">Template Size</label>
+  <input type="radio" id="rbtnVidSize" name="rbtnVidSize" value="manual" checked="checked" onchange="radioPanelHide('divManual', 'divTemplate')">
+  <label id="lbl9">Manual Size</label> <br>
   
   <div id="divManual">
   <label id="lbl7">Player: </label>
@@ -54,28 +55,28 @@
     <option value="player10">10</option>
   </select>
 
-    
-      <!-- <label for="lbl6"></label> -->
-
-      <!-- <label id="lbl3">Size: </label> -->
+  
       <select id="videoSizeDD" name="videoSizeDD">
         <option value="0">Small</option>
-        <option value="1" selected="selected">Medium</option>
+        <option value="1">Medium</option>
         <option value="2">Large</option>
       </select>
-      <button onclick="videoSize()">Update</button>
+      
       </div>
 
   <div id="divTemplate" style="display:none">
-    <p>coming soon</p>
+     <label id="lbl2">Coming Soon</label>
   </div>
+<br>
+  <button onclick="updateAll('1')" id="divTemplateBtn" style="display: none;">Update All</button>
+  <button onclick="updateAll('2')" id="divManualBtn">Update All</button>
 
-      <br>
+      <br><br>
 
     <label id="lbl5">Theme: </label>
     <button onclick="chgTheme('#383838', 'white')">Dark</button>
     <button onclick="chgTheme('#ffffff','black')">Light</button>
-    <br><br>
+    
   </div>
 
     <div id="playerPanel">
@@ -98,13 +99,19 @@
         <option value="player9">9</option>
         <option value="player10">10</option>
       </select>
-      <button onclick="switchPlayer()">Update</button><br><br>
+      <button onclick="switchPlayer()">Update</button>
 
 
     </div>
 
+    <div id="updatesPanel" style="display:none">
+      <p id="pUpdates">--Version 0.3--Beta--</p>
+      <p>- Features still being worked on.</p>
+      <p>- Full list will be added when 1.0 is finished.</p>
+    </div>
 
 
+<br><br>
     <div class= "keep-aspect" id="player1Div">
     <iframe id="player1" src="https://www.youtube.com/embed/1?autoplay=0" width="550" height="281" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
   </div>
@@ -135,19 +142,9 @@
   <div class="keep-aspect" id="player10Div">
     <iframe id="player10" src="https://www.youtube.com/embed/1?autoplay=0" width="560" height="315" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
   </div>
-<!--     
-    <iframe id="player3" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player4" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player5" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player6" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player7" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player8" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player9" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-    <iframe id="player10" src="https://www.youtube.com/embed/1?autoplay=0" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay"></iframe>
-     -->
-    
 
-    <!-- <p id="testString">test string</p> -->
+  <!-- for keeping track of iframe border colors -->
+  <p id="colorCheck" style="color: #383838;" style="display: none;">#383838</p>
 
     <script>
     
@@ -158,9 +155,7 @@
         var url1 = "https://player.twitch.tv/?channel=";
         var urlTrovo = "https://trovo.live/embed/player?streamername=";
         var url2 = streamerName;
-        
         var url3 = "&parent=isrussell.com";
-
 
         if(platChoice == "YouTube"){
           url1 = "https://www.youtube.com/embed/";
@@ -169,18 +164,19 @@
         }
         var playerID = document.getElementById("player").value;
         document.getElementById(playerID).src  = url1.concat(url2, url3);
-        resetHighlight();
+
+        // var bgColor = document.getElementById("colorCheck");
+        // document.getElementById("colorCheck2").innerHTML = document.getElementById("colorCheck").innerHTML;
+        resetHighlight(document.getElementById("colorCheck").innerHTML);
       }
 
       function breakURL(allURL){
         var endURL = allURL;
         var arrayURL = allURL.split('/');
         endURL = arrayURL.pop();
-        //document.getElementById("testString").innerHTML = endURL;
         return endURL;
       }
       
-
       function hidePlayer(){
          var x1 = document.getElementById("player1Div");
          var x2 = document.getElementById("player2Div");
@@ -193,67 +189,32 @@
          var x9 = document.getElementById("player9Div");
          var x10 = document.getElementById("player10Div");
 
+         var y1 = document.getElementById("player1");
+         var y2 = document.getElementById("player2");
+         var y3 = document.getElementById("player3");
+         var y4 = document.getElementById("player4");
+         var y5 = document.getElementById("player5");
+         var y6 = document.getElementById("player6");
+         var y7 = document.getElementById("player7");
+         var y8 = document.getElementById("player8");
+         var y9 = document.getElementById("player9");
+         var y10 = document.getElementById("player10");
+
          var xArray = [x1, x2, x3, x4, x5, x6, x7, x8, x9, x10];
+         var yArray = [y1, y2, y3, y4, y5, y6, y7, y8, y9, y10];
 
         var visOption = document.getElementById("playerVis").value;
         var visNum = parseInt(visOption);
-        
-        //xArray[visNum].style.display = "none";
         var diff = xArray.length - visNum;
     
         var i;
-
-
         for (i = 0; i < xArray.length; i++) {
           xArray[i].style.display = "inline";
         }
-
         for (i = visNum; i < xArray.length; i++) {
           xArray[i].style.display = "none";
-          //xArray[i].src = "https://www.youtube.com/embed/1?autoplay=0";
-          stopPlayer();
+          yArray[i].src = "https://www.youtube.com/embed/1?autoplay=0";
         }
-      }
-
-      function stopPlayer(){
-        var x1 = document.getElementById("player1");
-         var x2 = document.getElementById("player2");
-         var x3 = document.getElementById("player3");
-         var x4 = document.getElementById("player4");
-         var x5 = document.getElementById("player5");
-         var x6 = document.getElementById("player6");
-         var x7 = document.getElementById("player7");
-         var x8 = document.getElementById("player8");
-         var x9 = document.getElementById("player9");
-         var x10 = document.getElementById("player10");
-
-         var xArray = [x1, x2, x3, x4, x5, x6, x7, x8, x9, x10];
-
-        var visOption = document.getElementById("playerVis").value;
-        var visNum = parseInt(visOption);
-        
-        //xArray[visNum].style.display = "none";
-        var diff = xArray.length - visNum;
-    
-        var i;
-
-
-        for (i = 0; i < xArray.length; i++) {
-          //xArray[i].style.display = "inline";
-        }
-
-        for (i = visNum; i < xArray.length; i++) {
-          //xArray[i].style.display = "none";
-          xArray[i].src = "https://www.youtube.com/embed/1?autoplay=0";
-        }
-
-
-      }
-
-      function videoSize2(){
-        document.getElementById("player1Div").style.width = "33%";
-        document.getElementById("player1Div").style.paddingTop = "20%";
-        //document.getElementById("player2").style.height = heightSize[sizeOfArray];
       }
 
       function videoSize(){
@@ -316,49 +277,34 @@
 
       }
 
-      function videoSizeOne(){
-        
-        videoSize();
-      }
-
-      function mySwitch(panel) {
-      var x = document.getElementById(panel);
-      // var xName = document.getElementById("settingsBtn");
-
-      if (x.style.display === "none") {
-        x.style.display = "block";
-        // xName.innerHTML = "Settings (Showing)";
-      } else {
-        x.style.display = "none";
-        // xName.innerHTML = "Settings (Not Showing)";
-      }
-      }
-
       function chgTheme(chTheme, chTheme2){
         document.body.style.backgroundColor= chTheme;
         document.getElementById("lbl1").style.color = chTheme2;
         document.getElementById("lbl2").style.color = chTheme2;
-        document.getElementById("lbl3").style.color = chTheme2;
         document.getElementById("lbl4").style.color = chTheme2;
         document.getElementById("lbl5").style.color = chTheme2;
+        document.getElementById("lbl7").style.color = chTheme2;
+        document.getElementById("lbl8").style.color = chTheme2;
+        document.getElementById("lbl9").style.color = chTheme2;
+        document.getElementById("pUpdates").style.color = chTheme2;
+        document.getElementById("colorCheck").innerHTML = chTheme;
+        document.getElementById("colorCheck").style.color = chTheme;
+        resetHighlight(chTheme);
 
-        
       }
 
       function highlightPlayer(){
-
-        resetHighlight();
-              
-        var borderDef = "2px solid blue";
-
+        // resetHighlight();
+        resetHighlight(document.getElementById("colorCheck").innerHTML);   
+        var borderDef2 = "2px solid blue";
         var tempVal = document.getElementById("player").value;
-        document.getElementById(tempVal.concat("Div")).style.border = borderDef;
+        document.getElementById(tempVal.concat("Div")).style.border = borderDef2;
 
       }
 
-      function resetHighlight () {
+      function resetHighlight (color) {
 
-        var borderDef = "2px solid #383838";
+        var borderDef = "2px solid".concat(color);
 
         document.getElementById("player1Div").style.border = borderDef;
         document.getElementById("player2Div").style.border = borderDef;
@@ -373,29 +319,62 @@
 
       }
 
-      function videoSizeHide(panel, panel2) {
+      function radioPanelHide(panel, panel2) {
       var x = document.getElementById(panel);
+      var x2 = document.getElementById(panel.concat("Btn"))
+
       var y = document.getElementById(panel2);
-      // var xName = document.getElementById("settingsBtn");
+      var y2 = document.getElementById(panel2.concat("Btn"))
 
-      if (x.style.display === "none") {
-        y.style.display = "none";
-        x.style.display = "block";
-        // xName.innerHTML = "Settings (Showing)";
-      } else {
-        x.style.display = "block";
-        y.style.display = "none";
+        if (x.style.display === "none") {
+          y.style.display = "none";
+          x.style.display = "block";
+
+          y2.style.display = "none";
+          x2.style.display = "block";
+        } else {
+          x.style.display = "block";
+          y.style.display = "none";
+
+          x2.style.display = "block";
+          y2.style.display = "none";
+        }
+      }
+
+      function menuBarSelect(panel1, panel2, panel3){
+        var x = document.getElementById(panel1);
+        var y = document.getElementById(panel2);
+        var z = document.getElementById(panel3);
+        // var xName = document.getElementById("settingsBtn");
+
+        if (x.style.display === "none") {
+          y.style.display = "none";
+          x.style.display = "block";
+          z.style.display = "none";
+          
+          // xName.innerHTML = "Settings (Showing)";
+        } else {
+          x.style.display = "none";
+          y.style.display = "none";
+          z.style.display = "none";
         // xName.innerHTML = "Settings (Not Showing)";
-      }
+        }
       }
 
+      function updateAll(num){
+        
+        if(num == "2"){
+          videoSize();
+          hidePlayer();
+        } else{
+          hidePlayer();
+        }
+
+      }
+    
     </script>
 
-
-
-
   </body>
-
   
 </html>
 
