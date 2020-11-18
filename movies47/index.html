@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- head definitions go here -->
+    </head>
+    <body>
+        <input type="text" id="url">
+        <button onclick="changeSrc()">GO</button> 
+        <p id="testText">url check</p>
+        <video controls autoplay id="videoPlayer"> 
+            <source src="testVid" type="video/mp4">
+            <!-- <source src="movie.ogg" type="video/ogg"> -->
+          Your browser does not support the video tag.
+          </video> 
+          <!-- <video src="testVid.mp4" preload="auto" /> -->
+        
+        
+          <script>
+              function changeSrc(){
+                var videoSrc = document.getElementById("url").value;
+                document.getElementById("testText").innerHTML = videoSrc;
+                document.getElementById("videoPlayer").src = videoSrc;
+              }
+              
+          </script>
+
+        </body>
+        
+</html>
