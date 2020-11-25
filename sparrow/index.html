@@ -8,10 +8,19 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
         <style>
         .container {
-          position: absolute;
+          /* position: absolute; */
+          position: relative;
+
           text-align: center;
           color: white;
           left: 0;
+        }
+
+        .img{
+          position: absolute;
+          width: 100%;
+          /* height: 100px; */
+          /* border: 1px solid red; */
         }
         
         .bottom-left {
@@ -23,13 +32,13 @@
         .top-left {
           position: absolute;
           top: 8px;
-          left: 40px;
+          left: 16%;
         }
         
         .top-right {
           position: absolute;
           top: 8px;
-          right: 50px;
+          right: 16%;
         }
         
         .bottom-right {
@@ -48,14 +57,15 @@
         .left-score {
             position: absolute;
           top: 8px;
-          left: 36%;
+          left: 40%;
         }
 
 
         .right-score {
             position: absolute;
           top: 8px;
-          left: 63%;
+		  right: 40%;
+          /*left: 63%;*/
         }
         </style>
 
@@ -116,6 +126,19 @@
         div.width1 {
            max-width:270px; 
         }
+
+        .float-container{
+          border: 3px solid #ffffff;
+          padding: 20px;
+          height: 400px;
+        }
+        .float-child{
+          width: 50%;
+          float: left;
+          padding: 20px;
+          border: 2px solid rgb(255, 255, 255);
+        }
+
         </style>
 
         <style>
@@ -174,6 +197,17 @@
       background-color: #FFFFFF;
       color: #7ACDF7;
     }
+
+    .container {
+    position: relative;
+    }
+
+    .image {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+    }
     
     </style>
 
@@ -191,89 +225,103 @@
 <br>
 <div class="w3-center w3-padding" style="font-size: x-large">sparrow (in progress)</div>
     <hr>
-    <div id="userPanel" class="width1">
+    <div id="userPanel" class="float-container">
+      
         <!-- <button class="button button3" onclick="goToSite()">Back</button> -->
-        <button class="button button3" id="setupBtn" onclick="mySwitch()">Set Up (Showing)</button>
+        <!-- might now need this next line -->
+        <!-- <button class="button button3" id="setupBtn" onclick="mySwitch()">Set Up (Showing)</button> -->
 
 
-        <div id="setupPanel" style="background-color:#ffffff;">
+        <div id="setupPanel" style="background-color:#ffffff;" class="float-child">
+            <a>Setup</a><br>
+            <a>----------------</a>
             <div id="gameLbl">Games</div>
-            <select name="games" id="games">
+            <select name="games" id="games" class="wd2" onchange="updateGame()">
                 <option value="0">Default</option>
                 <option value="1">Smash Bros</option>
-                <!--<option value="2">Mortal Kombat</option>
-                <option value="3">Tekken</option> -->
+                <option value="2">Tekken</option>
             </select>
     <!-- <button id="updateGame" onclick="updateGame()">Update Game</button>
             <p></p> -->
     
+            <br>
             <select name="gameSelection" id="gameSelection">
-                <option value="0">Grey</option>
-                <option value="1">Red</option>
-                <option value="2">Purple</option>
+                <option id="l01" value="0">Grey</option>
+                <option id="l02" value="1">Red</option>
+                <option id="l03" value="2">None</option>
                 <!--<option value="3">Orange</option>-->
             </select>
+            <select name="gameSelection2" id="gameSelection2">
+              <option id="r01" value="0">Grey</option>
+              <option id="r02" value="1">Red</option>
+              <option id="r03" value="2">None</option>
+              <!--<option value="3">Orange</option>-->
+          </select>
             
             <button class="button button1" id="updateOverlay" onclick="updateOverlay()">Update Overlay</button>
             <p></p>
     
-            <textarea id="players" name="players" rows="10" cols="40">add names here. one per line.</textarea>
+            <textarea id="players" name="players" rows="5" cols="40">add names here. one per line.</textarea>
                 
                 <!-- <button id="updateBtn2" onclick="updatePlayers()">Update Players</button> -->
                 <button class="button button1" onclick="updatePlayers()">Update Players List</button><br>
           
-            <p></p>
+            <!-- <p></p> -->
     
             
             <p>color code for obs: #00ff00 or rgb (0,250,0)</p>
-            <p>-_-_-_-_-_-_-_-_-_-_-</p>
+            <!-- <p>-_-_-_-_-_-_-_-_-_-_-</p> -->
         </div>
 
-        <p></p>
+        <!-- <p></p> -->
        
 
         <!-- <button id="updateBtn" onclick="updateAll()">Update All</button> -->
         <!-- <button class="button button1" onclick="updateName()">Update Name</button><br> -->
 
-        <p></p>
+        <!-- <p></p> -->
         <!--<div id="player1Lbl">Player 1</div>-->
-        <select name="player2" id="player2" class="wd2" onchange="updateName()">
-            <option value="">Right Player</option>
-        </select><br>
-        <input type="text" value="0" id="p1ScoreLbl">
-        <button class="button button2" onclick="scoringLeft('+')">+</button>
-        <button class="button button2" onclick="scoringLeft('-')">-</button><br>
+        <div id="usePanel" class="float-child">
+          <a>Changer</a><br>
+          <a>----------------</a>
+          <div id="nameLbl">Names</div>
+          <select name="player2" id="player2" class="wd2" onchange="updateName()">
+              <option value="">Right Player</option>
+          </select><br>
+          <input type="text" value="0" id="p1ScoreLbl">
+          <button class="button button2" onclick="scoringLeft('+')">+</button>
+          <button class="button button2" onclick="scoringLeft('-')">-</button><br>
 
-        <p></p>
-        <!-- <div id="player2Lbl">Player 2</div> -->
-        <select name="player1" id="player1" class="wd2" onchange="updateName()">
-            <option value="">Left Player</option>
-        </select><br>
-        <input type="text" value="0" id="p2ScoreLbl">
-        
+          <p></p>
+          <!-- <div id="player2Lbl">Player 2</div> -->
+          <select name="player1" id="player1" class="wd2" onchange="updateName()">
+              <option value="">Left Player</option>
+          </select><br>
+          <input type="text" value="0" id="p2ScoreLbl">
+          
 
-        <button class="button button2" onclick="scoringRight('+')">+</button>
-        <button class="button button2" onclick="scoringRight('-')">-</button><br>
+          <button class="button button2" onclick="scoringRight('+')">+</button>
+          <button class="button button2" onclick="scoringRight('-')">-</button><br>
 
-        <button class="button button1" onclick="updateBoth()">Update Both Scores</button>
+          <button class="button button1" onclick="updateBoth()">Update Both Scores</button>
 
-        <p></p>
+          <p></p>
 
-        <select name="rounds" id="rounds" class="wd2" onchange="updateRound()">
-            <option value="">Select Round</option>
-            <option value="Winners">Winners</option>
-            <option value="Losers">Losers</option>
-            <option value="1st Round">1st Round</option>
-            <option value="2st Round">2st Round</option>
-            <!--<option value="3">Orange</option>-->
-        </select>
+          <select name="rounds" id="rounds" class="wd2" onchange="updateRound()">
+              <option value="">Select Round</option>
+              <option value="Winners">Winners</option>
+              <option value="Losers">Losers</option>
+              <option value="1st Round">1st Round</option>
+              <option value="2st Round">2st Round</option>
+              <!--<option value="3">Orange</option>-->
+          </select>
 
-        <!-- <button class="button button1" onclick="updateRound()">Update Round</button><br> -->
+          <!-- <button class="button button1" onclick="updateRound()">Update Round</button><br> -->
 
-        <!-- <button class="button button1" onclick="updateAll()">Update All</button><br> -->
-        <p></p>
-        <button class="button button1" onclick="clearAll()">Clear All</button><br>
-
+          <!-- <button class="button button1" onclick="updateAll()">Update All</button><br> -->
+          <p></p>
+          <button class="button button1" onclick="clearAll()">Clear All</button><br>
+      </div>
     
 
 
@@ -284,7 +332,7 @@
     
 
 
-<div id="hudLbl">HUD Below</div>
+<!-- <div id="hudLbl">HUD Below</div> -->
 
    <!-- <div id="scoreCard">
 
@@ -303,10 +351,16 @@
 
 <p></p>
 
-
+<a id="hudddd">HUD for OBS</a><br>
 <div class="container" style="background-color:#00ff00;">
     
-    <img id="scoreHud" src="https://i.imgur.com/z11bv0U.png" alt="Snow" style="width:100%;">
+  <div class="img" style="background-color:#00ff00;">
+    <img id="scoreHud" src="https://i.imgur.com/IPiRkfD.png" alt="Snow" style="width:100%;">
+  </div>
+  <div class="img" >
+    <img id="scoreHud2" src="https://i.imgur.com/lQ0N6Gt.png" alt="Snow" style="width:100%;">
+  </div>
+    <!-- <img id="scoreHud" src="https://i.imgur.com/z11bv0U.png" alt="Snow" style="width:100%;"> -->
     <div id="leftScore" class="left-score">0</div>
     <div id="leftName" class="top-left">Player 1</div>
     <div id="rightName" class="top-right">Player 2</div>
@@ -318,19 +372,55 @@
 <script>
 
 //extra button variables
+//look into making dynamic arrays?
 
 var playerArray = ["",""];
 var p1Score = 0;
 var p2Score = 0;
 
-var overlayArray = Array.from(Array(2), () => new Array(10));
-overlayArray [0][0] = "https://i.imgur.com/z11bv0U.png";
-overlayArray [0][1] = "https://i.imgur.com/qNTBZTS.png";
-overlayArray [0][2] = "https://i.imgur.com/CruUsmA.png";
+//left side
+var overlayArray = Array.from(Array(3), () => new Array(10));
+smashChar = ["",""];
+tekkenChar = ['',''];
+defaultColor = ['',''];
 
-overlayArray [1][0] = "https://i.imgur.com/FEPzVav.png";
-overlayArray [1][1] = "https://i.imgur.com/LFBtw6F.png";
-overlayArray [1][2] = "https://i.imgur.com/u3vt98F.png";
+overlayArray [0][0] = "https://i.imgur.com/IPiRkfD.png"; defaultColor[0] = 'Gray';
+overlayArray [0][1] = "https://i.imgur.com/2B8Wbpf.png"; defaultColor[1] = 'Orange';//orange
+overlayArray [0][2] = "https://i.imgur.com/CruUsmA.png"; defaultColor[2] = 'None';
+
+//smash
+overlayArray [1][0] = "https://i.imgur.com/uBSV1Q0.png"; smashChar[0] = "Kirby" //kirby 
+overlayArray [1][1] = "https://i.imgur.com/XuTFg5F.png"; smashChar[1] = "Lucas" //lucas
+overlayArray [1][2] = "https://i.imgur.com/0XzTkmb.png"; smashChar[2] = "Yoshi" //yoshi
+overlayArray [1][3] = "https://i.imgur.com/0XzTkmb.png"; smashChar[3] = "Mario" //yoshi
+overlayArray [1][4] = "https://i.imgur.com/0XzTkmb.png"; smashChar[4] = "Peach" //yoshi
+overlayArray [1][5] = "https://i.imgur.com/0XzTkmb.png"; smashChar[5] = "Bowser" //yoshi
+
+//tekken
+overlayArray [2][0] = "https://i.imgur.com/uBSV1Q0.png"; tekkenChar[0] = "Jin" //kirby 
+overlayArray [2][1] = "https://i.imgur.com/XuTFg5F.png"; tekkenChar[1] = "Yoshimitsu" //lucas
+overlayArray [2][2] = "https://i.imgur.com/0XzTkmb.png"; tekkenChar[2] = "Nina" //yoshi
+overlayArray [2][3] = "https://i.imgur.com/0XzTkmb.png"; tekkenChar[3] = "Heihachi" //yoshi
+
+//right side
+var overlayArray2 = Array.from(Array(3), () => new Array(10));
+overlayArray2 [0][0] = "https://i.imgur.com/lQ0N6Gt.png";
+overlayArray2 [0][1] = "https://i.imgur.com/NRXHAkH.png"; //orange right
+overlayArray2 [0][2] = "https://i.imgur.com/CruUsmA.png";
+
+//smash
+overlayArray2 [1][0] = "https://i.imgur.com/ti2UQ5J.png"; //kirby
+overlayArray2 [1][1] = "https://i.imgur.com/4i1ljKi.png"; //lucas
+overlayArray2 [1][2] = "https://i.imgur.com/V4e6FUd.png"; //yoshi
+overlayArray2 [1][3] = "https://i.imgur.com/V4e6FUd.png"; //yoshi
+overlayArray2 [1][4] = "https://i.imgur.com/V4e6FUd.png"; //yoshi
+overlayArray2 [1][5] = "https://i.imgur.com/V4e6FUd.png"; //yoshi
+
+//tekken
+overlayArray2 [2][0] = "https://i.imgur.com/ti2UQ5J.png"; //kirby
+overlayArray2 [2][1] = "https://i.imgur.com/4i1ljKi.png"; //lucas
+overlayArray2 [2][2] = "https://i.imgur.com/V4e6FUd.png"; //yoshi
+overlayArray2 [2][3] = "https://i.imgur.com/V4e6FUd.png"; //yoshi
 
 
 
@@ -445,19 +535,53 @@ function updateName(){
     document.getElementById("rightName").innerHTML = document.getElementById("player2").value;
 }
 
-function updateGame(){
+//delcare character arrays here
+var smashCharacters = ["Kirby", "Lucas", "Yoshi"]
+var currentLength = 0;
+var tempArray = ['',''];
 
-    var tempGame = document.getElementById("games").value;
-
-    if (tempGame == "default"){
-        document.getElementById("scoreHud").src = overlayArray [0][0];
-    } else if (tempGame == "smashBros"){
-        document.getElementById("scoreHud").src = overlayArray [0][1];
-    } else if(tempGame == "tekken"){
-        document.getElementById("scoreHud").src = overlayArray [0][2];
+function updateGame(){   
+    // tempArray = smashChar;
+    currentLength = tempArray.length;
+    var tempChh = document.getElementById('games').value;
+    document.getElementById('hudddd').innerHTML = currentLength.toString();
+    if(tempChh == '0'){
+      tempArray = defaultColor;
+    }else if(tempChh == '1'){
+      tempArray = smashChar;
+    }else if(tempChh == '2'){
+      tempArray = tekkenChar;
     }
     
-    
+
+
+	var i;
+	//need a check for a current array so we don't leave old values
+	for(i = 0; i< smashChar.length; i++){
+		var x = document.getElementById("gameSelection2");
+		x.remove(i);
+		var option = document.createElement("option");
+		option.text = tempArray[i];
+		option.value = i.toString();
+		x.add(option,x[i]);
+
+    var y = document.getElementById("gameSelection");
+		y.remove(i);
+		var option2 = document.createElement("option");
+		option2.text = tempArray[i];
+		option2.value = i.toString();
+		y.add(option2,y[i]);			
+	}
+
+  var j;
+  if(tempArray.length < currentLength){
+    for(j = 0; j<=currentLength-tempArray.length-1;j++){
+      var z = document.getElementById("gameSelection");
+      z.remove(z.length-1);
+      z = document.getElementById("gameSelection2");
+      z.remove(z.length-1);
+    }
+  }     
 }
 
 function updateOverlay(){
@@ -477,10 +601,13 @@ if (tempGame == "1"){
 
 var tempVal = parseInt(document.getElementById("games").value);
 var tempVal2 = parseInt(document.getElementById("gameSelection").value);
+var tempVal3 = parseInt(document.getElementById("gameSelection2").value);
 
 //document.getElementById("player1Lbl").innerHTML = overlayArray [tempVal][tempVal2];
 
 document.getElementById("scoreHud").src = overlayArray [tempVal][tempVal2];
+document.getElementById("scoreHud2").src = overlayArray2 [tempVal][tempVal3];
+// document.getElementById("scoreHud").src = overlayArray [tempVal][tempVal2];
 
 
 }

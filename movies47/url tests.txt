@@ -1,0 +1,29 @@
+..\Videos\Call of Duty  Black Ops Cold War\Vid1.mp4
+
+file:///C:\Videos\Call of Duty  Black Ops Cold War\Vid1.mp4
+
+E:\before\testVid.mp4
+
+file:///E:/before/testVid.mp4
+
+http://file://///E:\before\testVid.mp4
+
+
+https://www.dropbox.com/s/6r8wgo851md2339/testDB.mp4?dl=0
+
+https://www.dropbox.com/s/6r8wgo851md2339/testDB.mp4?raw=1
+
+https://drive.google.com/file/d/13gl9MJrsbYJph-c4rp6IfNeWfx4lT2TZ/view?usp=sharing
+
+https://drive.google.com/file/d/13gl9MJrsbYJph-c4rp6IfNeWfx4lT2TZ/preview?autoplay=1
+
+https://drive.google.com/file/d/1madbvgDWJZhR2JAaSzekabvVZWOMkML8/preview?autoplay=1
+
+
+Dropbox videos 
+https://www.dropbox.com/s/6r8wgo851md2339/testDB.mp4?raw=1
+
+https://www.dropbox.com/s/ofsb86z6fi5ehvp/testDB2.m4v?dl=0
+https://www.dropbox.com/s/ofsb86z6fi5ehvp/testDB2.m4v?raw=1
+
+https://www.dropbox.com/s/3e32hd4tlj2y2u9/testDB3.mp4?raw=1

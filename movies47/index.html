@@ -4,24 +4,181 @@
         <!-- head definitions go here -->
     </head>
     <body>
-        <input type="text" id="url">
-        <button onclick="changeSrc()">GO</button> 
-        <p id="testText">url check</p>
-        <video controls autoplay id="videoPlayer"> 
-            <source src="testVid" type="video/mp4">
-            <!-- <source src="movie.ogg" type="video/ogg"> -->
+        <input type="text" id="url" text="">
+        <button onclick="addSrc()">Add</button> 
+        <button onclick="changeSrc()">GO</button> <br><br>
+        <!-- <p id="url1">url1</p> -->
+
+        <div style="display: none;" id="url1Div"><a id="url1">url1</a> <button onclick="deleteSrc('1')">delete</button> <br></div>
+        <div style="display: none;" id="url2Div"><a id="url2">url2</a> <button onclick="deleteSrc('2')">delete</button> <br></div>
+        <div style="display: none;" id="url3Div"><a id="url3">url3</a> <button onclick="deleteSrc('3')">delete</button> <br></div>
+        <div style="display: none;" id="url4Div"><a id="url4">url4</a> <button onclick="deleteSrc('4')">delete</button> <br></div>
+        <div style="display: none;" id="url5Div"><a id="url5">url5</a> <button onclick="deleteSrc('5')">delete</button> <br></div>
+
+        <br>
+        <!-- <p id="url1">url check</p>
+        <p id="url1">url check</p> -->
+
+        <!-- <video width="665" height="500" controls autoplay id="videoPlayer"> 
+            <source src="https://drive.google.com/file/d/13gl9MJrsbYJph-c4rp6IfNeWfx4lT2TZ/view?usp=sharing" type="video/mp4">
+            
           Your browser does not support the video tag.
-          </video> 
+          </video>  -->
           <!-- <video src="testVid.mp4" preload="auto" /> -->
         
-        
+          <iframe src="how to video" frameborder="0" allow="autoplay" width="640" height="480" id="videoPlayer" ></iframe>
+
+          <!-- <iframe src="https://www.dropbox.com/s/6r8wgo851md2339/testDB.mp4?raw=1" width="640" height="480"></iframe> -->
+          <br>
+          <a id='playingSrc'>0/0</a>
+          <button onclick="nextSrc()">Next</button> <br>
+          <a id="currentSrc">...</a>
+          <a id='movieCounter'>0</a>
+          <br>
+          <a id="movie1">..</a><br>
+          <a id="movie2">..</a><br>
+          <a id="movie3">..</a><br>
+          <a id="movie4">..</a><br>
+          <a id="movie5">..</a><br>
+          <a id='countingthing'>non</a><br>
+          <button onclick="updateList()">update</button>
+
           <script>
+              var movies = ["0", "0", "0","0","0"];
+              movieCount = 0;
+
               function changeSrc(){
                 var videoSrc = document.getElementById("url").value;
-                document.getElementById("testText").innerHTML = videoSrc;
+
+                videoSrc = breakURL(videoSrc)
+
+                document.getElementById("url1").innerHTML = videoSrc;
                 document.getElementById("videoPlayer").src = videoSrc;
               }
               
+              function breakURL(allURL){
+                var endURL = allURL;
+                var arrayURL = allURL.split('?');
+                var arrayURL2 = allURL.substring(0, allURL.indexOf("?"));
+                endURL = arrayURL2 + "?raw=1"
+                return endURL;
+                }
+
+            function nextSrc(){
+                var tempStr = document.getElementById("playingSrc").textContent;
+                var i = tempStr.split('/');
+                var i2 = tempStr.substring(0, tempStr.indexOf("/"));
+                var n = parseInt(i2) + 1;
+                if(n == movieCount+1){
+                    n = 1;
+                }
+                // if(movies[n-1] == '0'){                   
+                //     n = n + 1;
+                // }
+                while (movies[n-1] == '0'){
+                    n = n +1;
+                }
+
+                if(movieCount != 0){
+                    document.getElementById("playingSrc").innerHTML = n.toString().concat('/'.concat(movieCount.toString()));
+                    document.getElementById("currentSrc").innerHTML = movies[n-1];
+                }
+
+            }
+
+            function addSrc(){
+                // while(3 = 3){} //go through array to check if empty
+                var urlTemp = document.getElementById("url").value;
+                if(movies[0] == '0'){
+                    document.getElementById("url1").innerHTML = urlTemp;
+                    movies[0] = urlTemp;
+                    document.getElementById("url1Div").style.display = "inline";
+                    movieCount = movieCount + 1;
+                    movieTicker(movieCount.toString(),movieCount.toString())
+                }else if(movies[1] == '0'){
+                    document.getElementById("url2").innerHTML = urlTemp;
+                    movies[1] = urlTemp;
+                    document.getElementById("url2Div").style.display = "inline";
+                    movieCount = movieCount + 1;
+                    movieTicker(movieCount.toString(),movieCount.toString())
+                }else if(movies[2] == '0'){
+                    document.getElementById("url3").innerHTML = urlTemp;
+                    movies[2] = urlTemp;
+                    document.getElementById("url3Div").style.display = "inline";
+                    movieCount = movieCount + 1;
+                    movieTicker(movieCount.toString(),movieCount.toString())
+                }else if(movies[3] == '0'){
+                    document.getElementById("url4").innerHTML = urlTemp;
+                    movies[3] = urlTemp;
+                    document.getElementById("url4Div").style.display = "inline";
+                    movieCount = movieCount + 1;
+                    movieTicker(movieCount.toString(),movieCount.toString())
+                }else if(movies[4] == '0'){
+                    document.getElementById("url5").innerHTML = urlTemp;
+                    movies[4] = urlTemp;
+                    document.getElementById("url5Div").style.display = "inline";
+                    movieCount = movieCount + 1;
+                    movieTicker(movieCount.toString(),movieCount.toString())
+                }
+                document.getElementById("movieCounter").innerHTML = movieCount.toString();
+                // updateList();
+
+            }
+
+            function deleteSrc(srcChoice){
+                document.getElementById("url".concat(srcChoice)).innerHTML = '0';
+                // movies[0] = '0'
+                movies[parseInt(srcChoice)-1] = '0';
+                // document.getElementById("url".concat(srcChoice,"Div")).style.display = "none";
+
+                
+                // movies.splice(parseInt(srcChoice)-1,1);
+                // movies.push('0')
+
+
+
+                movieCount = movieCount - 1;
+                document.getElementById("movieCounter").innerHTML = movieCount.toString();
+                movieTicker(movieCount.toString(),movieCount.toString());
+
+
+                // moveArray(parseInt(srcChoice));
+                // movies.splice(parseInt(srcChoice),1);
+                // updateList();
+                
+            }
+
+            function movieTicker(int1, int2){
+                document.getElementById("playingSrc").innerHTML = int1.concat('/',int2)
+            }
+
+
+            function moveArray(tempInt){
+                movies[tempInt] =  movies[tempInt+1]; 
+            }
+
+            function updateList(){
+                // var i = 1;
+                var arrayLen = movies.length;
+                
+                // for( var i = 1;i <= arrayLen;i = i + 1){
+                //     document.getElementById("countingthing").innerHTML = i.toString();
+                //     if(movies[i-1] == '0'){
+                //         movies[i-1] = movies[i];
+                //         movies[i] = '0';
+                        
+                //     }
+                // }
+
+                document.getElementById("movie1").innerHTML = movies[0];
+                document.getElementById("movie2").innerHTML = movies[1];
+                document.getElementById("movie3").innerHTML = movies[2];
+                document.getElementById("movie4").innerHTML = movies[3];
+                document.getElementById("movie5").innerHTML = movies[4];
+            }
+
+                
+
           </script>
 
         </body>
