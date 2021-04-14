@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+
+<!-- most stuff -->
+<style>
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 500px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+p{
+    text-align: center;
+}
+
+h4{
+    text-align: center;
+}
+</style>
+
+<!-- button style -->
+<style>
+    .button {
+            background-color: #a7a7a7; 
+            border: none;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            padding: 1px 1px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin: 3px 2px;
+            cursor: pointer;
+        }
+    .projects{
+        width: 100px; 
+        height: 20px; 
+    }
+    .footer{
+        width: 100px; 
+        height: 20px; 
+        float: left;
+    }
+    .footer2{
+        width: 100px; 
+        height: 20px; 
+        float: right;
+    }
+    .footer3{
+      width: 50px; 
+      height: 50px; 
+      /* border-radius: 10px; */
+      border: none;
+      float: center;
+      background: none;
+
+    }
+</style>
+
+<!-- nav bar -->
+<style>
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #FFFFFf;
+}
+
+.topnav a {
+  float: left;
+  color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #FFFFFF;
+  color: #7ACDF7;
+}
+
+</style>
+
+<!-- Grid for site buttons -->
+<style>
+
+.grid-wrapper{
+  /* width: 50%; */
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.grid-wrapper img{
+  height: 100%;
+  width: auto;
+  
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto auto auto auto auto;
+  /* background-color: #ffffff; */
+  padding: 5px;
+  float: left;
+  /* border: 1px solid red; */
+  width: 50%;
+}
+
+.grid-container2 {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto auto auto auto auto;
+  /* background-color: #ffffff; */
+  padding: 5px;
+  float: left;
+  border: 1px solid blue;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
+  </style>
+
+<!-- divs for other boxes -->
+<style>
+  .discord-div{
+    float: right;
+    padding: 5px;
+  }
+  .calendar-div{
+    float: left;
+    padding: 5px;
+    width: 50%;
+  }
+
+  .bgimg-div{
+    height: 100%;
+    width: 100%;
+    border: 1px solid rgb(0, 0, 0);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-image: url(https://wallpapercave.com/wp/wc1684078.jpg);
+  }
+
+  .ddg-div{
+    margin: auto;
+    width: 60%;
+    padding: 5px;
+  }
+
+</style>
+
+<!-- iframes -->
+<style>
+  .iframe-cal{
+    width: 80%; 
+    height: 400px;
+    border-width: 0;
+    /* frameborder: 0; */
+    /* scrolling: no; */
+  }
+
+  .iframe-ddg{
+    overflow:hidden;
+    margin:0;
+    padding:0;
+    width:100%;
+    height:60px;
+  }
+
+</style>
+
+</head>
+
+<div class="bgimg-div">
+<body>
+  <!-- <div class="topnav">
+    <a onclick="goToSite('home')">home</a>
+    <a class="active">project</a>
+    <a onclick="goToSite('comingsoon')">contact</a>
+  </div> -->
+  
+    <!-- ><button style="background-color: #71717100; border: none;" onclick="goToSite()">Home</button> -->
+
+<br>
+    <!-- <h4>cosmic pager</h4> -->
+    <div class="w3-center w3-padding" style="font-size: x-large">broswer home test</div>
+    <hr>
+
+
+<br>
+
+
+
+<div class="ddg-div">
+<iframe class="iframe-ddg" src="https://duckduckgo.com/search.html?prefill=hey russell" frameborder="0"></iframe>
+</div>
+
+<br>
+
+<div class="grid-wrapper" >
+<!-- https://www.w3schools.com/css/tryit.asp?filename=trycss_grid_grid-gap -->
+<!-- <img src="http://beyondeurope.net/wp-content/uploads/2014/08/Top_10_Universities_in_New_York_City.jpg" /> -->
+
+<!-- <div style="
+   height: 100px; width: 250px; border: 1px solid black; 
+   background-image: url(https://www.willmaster.com/library/images/background-sample-250.jpg);
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-size: cover;
+   ">
+</div> -->
+
+
+
+<div class="grid-container">
+  <div class="grid-item" id="block1" onclick="chgSite(1)">1</div>
+  <div class="grid-item" id="block2" onclick="chgSite(2)">2</div>
+  <div class="grid-item" id="block3" onclick="chgSite(3)">3</div>  
+  <div class="grid-item" id="block4" onclick="chgSite(4)">4</div>
+  <div class="grid-item" id="block5" onclick="chgSite(5)">5</div>
+  <div class="grid-item" id="block6" onclick="chgSite(6)">6</div>  
+  <div class="grid-item" id="block7" onclick="chgSite(7)">7</div>
+  <div class="grid-item" id="block8" onclick="chgSite(8)">8</div>
+  <div class="grid-item" id="block9" onclick="chgSite(9)">9</div> 
+  <div class="grid-item" id="block10" onclick="chgSite(10)">10</div>  
+</div>
+
+
+<div class="discord-div">
+  <iframe src="https://discord.com/widget?id=452623967073861632&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+</div>
+
+<div class="calendar-div">
+  <iframe class="iframe-cal" src="https://calendar.google.com/calendar/embed?height=200&amp;wkst=1&amp;bgcolor=%23A79B8E&amp;ctz=America%2FChicago&amp;src=bnYxdmVvY3N1M3Nhc2dta25wcmpwdGVzc3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23F09300&amp;mode=MONTH&amp;showNav=0&amp;showTabs=0&amp;showPrint=0&amp;showTz=0&amp;showCalendars=0&amp;showDate=0&amp;showTitle=0"></iframe>
+  </div>
+
+  <!-- <link rel="alternate" type="application/atom+xml" href="http://rss.cnn.com/rss/cnn_topstories.rss"> -->
+  <!-- <object data=http://rss.cnn.com/rss/cnn_topstories.rss width="600" height="400"> <embed src=http://rss.cnn.com/rss/cnn_topstories.rss width="600" height="400"> </embed> Error: Embedded data could not be displayed. </object> -->
+
+</div> <!-- end of wrapper-->
+
+</div>  <!-- end of img wrapper-->
+
+<hr>
+
+
+<script>
+
+//array with urls
+var urlList = [''];
+var urlPic = [''];
+urlList[0]="https://www.youtube.com/";
+urlPic[0]='youtube';
+document.getElementById('block1').innerHTML = urlPic[0];
+urlList[1]="https://www.netflix.com/browse";
+urlPic[1]='netflix';
+document.getElementById('block2').innerHTML = urlPic[1];
+urlList[2]="https://www.crunchyroll.com/";
+urlPic[2]='crunchyroll';
+document.getElementById('block3').innerHTML = urlPic[2];
+urlList[3]="https://myanimelist.net/";
+urlPic[3]='MAL';
+document.getElementById('block4').innerHTML = urlPic[3];
+urlList[4]="https://isrussellm.github.io/";
+urlPic[4]='na';
+document.getElementById('block5').innerHTML = urlPic[4];
+urlList[5]="https://isrussellm.github.io/";
+urlPic[5]='6';
+document.getElementById('block6').innerHTML = urlPic[5];
+urlList[6]="https://isrussellm.github.io/";
+urlPic[6]='7';
+document.getElementById('block7').innerHTML = urlPic[6];
+urlList[7]="https://isrussellm.github.io/";
+urlPic[7]='8';
+document.getElementById('block8').innerHTML = urlPic[7];
+urlList[8]="https://isrussellm.github.io/";
+urlPic[8]='9';
+document.getElementById('block9').innerHTML = urlPic[8];
+urlList[9]="https://www.w3schools.com/";
+urlPic[9]='10';
+document.getElementById('block10').innerHTML = urlPic[9];
+
+
+function chgSite(siteChoice){
+
+
+
+  if(siteChoice == "1"){
+  window.location.href = urlList[0];}
+  //document.getElementById('block1').innerHTML = 'aaaaa';
+  //style="background-image: url('https://bit.ly/3iEJXFJ');"
+  else if(siteChoice == "2"){
+    window.location.href = urlList[1];
+  }else if(siteChoice == "3"){
+    window.location.href = urlList[2];
+  }else if(siteChoice == "4"){
+    window.location.href = urlList[3];
+  }else if(siteChoice == "5"){
+    window.location.href = urlList[4];
+  }else if(siteChoice == "6"){
+    window.location.href = urlList[5];
+  }else if(siteChoice == "7"){
+    window.location.href = urlList[6];
+  }else if(siteChoice == "8"){
+    window.location.href = urlList[7];
+  }else if(siteChoice == "9"){
+    window.location.href = urlList[8];
+  }else if(siteChoice == "10"){
+    window.location.href = urlList[9];
+  }
+
+  // https://www.netflix.com/browse
+}
+
+function goToSite(pages){
+  if(pages=="home"){
+    window.location.href = "https://isrussell.com/";
+    }else{
+      window.location.href = "https://isrussellm.github.io/".concat(pages, "/");
+    }
+}
+
+function randomProject(){
+  
+  var projectsArray = ["",""];
+  projectsArray[0]="pager";
+  projectsArray[1]="sparrow";
+  projectsArray[2]="comingsoon";
+
+  var randomNum = Math.floor((Math.random() * projectsArray.length) + 0);
+
+  goToSite(projectsArray[randomNum]);
+
+}
+
+
+function socialMedia(sMedia){
+    window.location.href = sMedia;
+}
+</script>
+
+</body>
+</html> 

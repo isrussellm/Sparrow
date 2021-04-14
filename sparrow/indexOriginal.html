@@ -1,487 +1,462 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Sparrow</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial;}
 
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
+    <head>
+        <title>Sparrow</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+        <style>
+        .container {
+          /* position: absolute; */
+          position: relative;
 
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
+          text-align: center;
+          color: white;
+          left: 0;
+        }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
+        .img{
+          position: absolute;
+          width: 100%;
+          /* height: 100px; */
+          /* border: 1px solid red; */
+        }
 
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-  height: 400px;
-}
-</style>
-
-<!-- orignal style -->
-<style>
-    .container {
-      /* position: absolute; */
-      position: relative;
-
-      text-align: center;
-      color: white;
-      left: 0;
-    }
-
-    .img{
-      position: absolute;
-      width: 100%;
-      /* height: 100px; */
-      /* border: 1px solid red; */
-    }
-
-    /* left */
-    .img2{
-      position: absolute;
-      width: 5%;
-      top: 1px;
-      left: 10%;
-      /* -webkit-transform: scaleX(-1); */
-      /* transform: scaleX(-1); */
-      /* height: 100px; */
-      /* border: 1px solid red; */
-    }
-    
-    /* right */
-    .img3{
-      position: absolute;
-      width: 5%;
-      top: 1px;
-      right: 10%;
-      /* height: 100px; */
-      /* border: 1px solid red; */
-    }
-
-    .bottom-left {
-      position: absolute;
-      bottom: 8px;
-      left: 16px;
-    }
-    
-    .top-left {
-      position: absolute;
-      top: 8px;
-      left: 16%;
-    }
-    
-    .top-right {
-      position: absolute;
-      top: 8px;
-      right: 16%;
-    }
-    
-    .bottom-right {
-      position: absolute;
-      bottom: 8px;
-      right: 16px;
-    }
-    
-    .centered {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .left-score {
-        position: absolute;
-      top: 8px;
-      left: 40%;
-    }
-
-
-    .right-score {
-        position: absolute;
-      top: 8px;
-      right: 40%;
-      /*left: 63%;*/
-    }
-    </style>
-
-    
-
-    <style>
-    .button {
-        background-color: #b1b1b1; /* Green */
-        border: none;
-        border-radius: 10px;
-        color: rgb(0, 0, 0);
-        padding: 1px 1px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 15px;
-        margin: 3px 2px;
-        cursor: pointer;
-    }
-
-    .button1 {width: 100%; height: 30px;}
-    .button2 {width: 33%; height: 20px;}
-    .button3 {width: 100%; height: 30px;}
-
-    .inputScore{width: 33%; height: 22px;          
-    }
-    </style>
-
-    <!--<style>
-    body {
-        height: 5000px; /* Make this site really long */
-        width: 5000px; /* Make this site really wide */
-        overflow-y: hidden;
-        overflow-x: hidden;
-    }
-    </style> -->
-
-    <style>
-        /* width */
-        ::-webkit-scrollbar {
-          width: 10px;
+        /* left */
+        .img2{
+          position: absolute;
+          width: 5%;
+          top: 1px;
+          left: 10%;
+          /* -webkit-transform: scaleX(-1); */
+          /* transform: scaleX(-1); */
+          /* height: 100px; */
+          /* border: 1px solid red; */
         }
         
-        /* Track */
-        ::-webkit-scrollbar-track {
-          background: #00ff00; 
+        /* right */
+        .img3{
+          position: absolute;
+          width: 5%;
+          top: 1px;
+          right: 10%;
+          /* height: 100px; */
+          /* border: 1px solid red; */
         }
-         
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-          background: #00ff00; 
+
+        .bottom-left {
+          position: absolute;
+          bottom: 8px;
+          left: 16px;
         }
         
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-          background: #00ff00; 
+        .top-left {
+          position: absolute;
+          top: 8px;
+          left: 16%;
+        }
+        
+        .top-right {
+          position: absolute;
+          top: 8px;
+          right: 16%;
+        }
+        
+        .bottom-right {
+          position: absolute;
+          bottom: 8px;
+          right: 16px;
+        }
+        
+        .centered {
+          position: absolute;
+          top: 10px;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        .left-score {
+            position: absolute;
+          top: 8px;
+          left: 40%;
+        }
+
+
+        .right-score {
+            position: absolute;
+          top: 8px;
+		  right: 40%;
+          /*left: 63%;*/
         }
         </style>
 
-    <style>
-    div.width1 {
-       max-width:270px; 
-    }
+        
 
-    .float-container{
-      border: 3px solid #ffffff;
-      padding: 20px;
-      height: 400px;
+        <style>
+        .button {
+            background-color: #b1b1b1; /* Green */
+            border: none;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            padding: 1px 1px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin: 3px 2px;
+            cursor: pointer;
+        }
+    
+        .button1 {width: 100%; height: 30px;}
+        .button2 {width: 33%; height: 20px;}
+        .button3 {width: 100%; height: 30px;}
+
+        .inputScore{width: 33%; height: 22px;          
+        }
+        </style>
+
+        <!--<style>
+        body {
+            height: 5000px; /* Make this site really long */
+            width: 5000px; /* Make this site really wide */
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+        </style> -->
+
+        <style>
+            /* width */
+            ::-webkit-scrollbar {
+              width: 10px;
+            }
+            
+            /* Track */
+            ::-webkit-scrollbar-track {
+              background: #00ff00; 
+            }
+             
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+              background: #00ff00; 
+            }
+            
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+              background: #00ff00; 
+            }
+            </style>
+
+        <style>
+        div.width1 {
+           max-width:270px; 
+        }
+
+        .float-container{
+          border: 3px solid #ffffff;
+          padding: 20px;
+          height: 400px;
+        }
+        .float-child{
+          width: 50%;
+          float: left;
+          padding: 20px;
+          border: 2px solid rgb(255, 255, 255);
+        }
+        .float-child2{
+          width: 50%;
+          float: left;
+          padding: 2px;
+          border: 2px solid rgb(255, 255, 255);
+        }
+
+        </style>
+
+        <style>
+        select {
+            border-radius: 10px;
+            width: 48%;
+        }
+        select.wd2 {
+            border-radius: 10px;
+            width: 100%;
+        }
+        textarea {
+            border-radius: 10px;
+            width: 100%;
+        }
+        #p1ScoreLbl {
+            border-radius: 10px;
+            width: 23%;
+        }
+        #p2ScoreLbl {
+            border-radius: 10px;
+            width: 23%;
+        }
+        
+        </style>
+
+
+        <!-- nav bar -->
+
+<style>
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
     }
-    .float-child{
-      width: 50%;
+    
+    .topnav {
+      overflow: hidden;
+      background-color: #FFFFFf;
+    }
+    
+    .topnav a {
       float: left;
-      padding: 20px;
-      border: 2px solid rgb(255, 255, 255);
+      color: #000000;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
     }
-    .float-child2{
-      width: 50%;
-      float: left;
-      padding: 2px;
-      border: 2px solid rgb(255, 255, 255);
+    
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+    .topnav a.active {
+      background-color: #FFFFFF;
+      color: #7ACDF7;
     }
 
-    </style>
+    .container {
+    position: relative;
+    }
 
-    <style>
-    select {
-        border-radius: 10px;
-        width: 48%;
-    }
-    select.wd2 {
-        border-radius: 10px;
-        width: 100%;
-    }
-    textarea {
-        border-radius: 10px;
-        width: 100%;
-    }
-    #p1ScoreLbl {
-        border-radius: 10px;
-        width: 23%;
-    }
-    #p2ScoreLbl {
-        border-radius: 10px;
-        width: 23%;
+    .image {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
     }
     
     </style>
 
-</head>
+        </head>
+
 <body>
+    <body style="background-color:#ffffff;"></body>   
 
-    <h2>Sparrow test</h2>
-<p>Click on the buttons inside the tabbed menu:</p>
+    <body>
+        <div class="topnav">
+          <a onclick="goToSite('home')">home</a>
+          <a class="active">project</a>
+          <a onclick="goToSite('contact')">contact</a>
+        </div>
+<br>
+<div class="w3-center w3-padding" style="font-size: x-large">sparrow (in progress)</div>
+    <hr>
+    <div id="userPanel" class="float-container">
+      
+        <!-- <button class="button button3" onclick="goToSite()">Back</button> -->
+        <!-- might now need this next line -->
+        <!-- <button class="button button3" id="setupBtn" onclick="mySwitch()">Set Up (Showing)</button> -->
 
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Use')">Use</button>
-  <button class="tablinks" onclick="openCity(event, 'Info')">Info</button>
-  <button class="tablinks" onclick="openCity(event, 'Setup')">Setup</button>
-</div>
 
-<div id="Use" class="tabcontent">
-  <h3>Use</h3>
-  <div id="usePanel">
-    <a>Changer</a><br>
-    <a>----------------</a><br>
+        <div id="setupPanel" style="background-color:#ffffff;" class="float-child">
+            <!-- <a>Setup</a><br>
+            <a>----------------</a><br> -->
+            <!-- <div id="gameLbl">Games</div> -->
+            <!-- <select name="games" id="games" onchange="updateGame()">
+                <option value="0">Games | Default</option>
+                <option value="1">Smash Bros</option>
+                <option value="2">Tekken</option>
+                <option value="3">Custom</option>
+            </select>
+            <select name="baseColor" id="baseColor">
+              <option value="0">Base Color | Gray</option>
+              <option value="1">Purple</option>
+              <option value="2">Smash Bros</option>
+              <option value="3">Tekken</option>
+              <option value="4">Custom</option>
+          </select> -->
+    <!-- <button id="updateGame" onclick="updateGame()">Update Game</button>
+            <p></p> -->
     
-    <!-- <select name="player2" id="player2" class="wd2" onchange="updateName()">
-        <option value="">Right Player</option>
-    </select><br> -->
-    <div id="gameLbl">Games</div>
-    <select name="games" id="games" onchange="updateGame()">
-      <option value="0">Games | Default</option>
-      <option value="1">Smash Bros</option>
-      <option value="2">Tekken</option>
-      <option value="3">Custom</option>
-    </select>
-    <select name="baseColor" id="baseColor" onchange="updateOverlay('1')">
-    <option value="0">Base Color | Gray</option>
-    <option value="1">Purple</option>
-    <option value="2">Smash Bros</option>
-    <option value="3">Tekken</option>
-    <option value="4">Custom</option>
-    </select>
-
-    <select name="gameSelection" id="gameSelection" disabled onchange="updateOverlay('2')">
-      <option id="l01" value="0">Character Select</option>
-    </select>
-    <select name="gameSelection2" id="gameSelection2" disabled onchange="updateOverlay('3')">
-    <option id="r01" value="0">Character Select</option>
-    </select>
-
-    <div id="nameLbl">Names</div>
-    <select name="player1" id="player1" onchange="updateName()">
-      <option value="">Left Player</option>
-    </select> 
-    <select name="player2" id="player2" onchange="updateName()">
-    <option value="">Right Player</option>
-    </select>
-
-    <!-- positionBtn at 350? -->
-
+            <br>
+            <div id="characterSelectors"> 
+              <!-- style="display: none;" -->
+            <!-- <select name="gameSelection" id="gameSelection" disabled>
+                <option id="l01" value="0">Character Select</option>
+            </select>
+            <select name="gameSelection2" id="gameSelection2" disabled>
+              <option id="r01" value="0">Character Select</option>
+          </select> -->
+          </div>
+            
+            <!-- <button class="button button1" id="updateOverlay" onclick="updateOverlay('1')">Update Overlay</button> -->
+            <p></p>
     
+            <div class="float-child2">
+            <textarea id="players" name="players" rows="5" cols="40">add names here. one per line.</textarea>
+          </div>
+          <div class="float-child2">
+            <textarea name="customURLs" id="customURLs" cols="40" rows="5">replace with custom urls. one per line.</textarea>
+          </div>
+                <button class="button button1" onclick="updatePlayers()">Update Players List</button>
+                <button class="button button1" onclick="updateCustom()">Update Custom</button>
 
-    <div class="float-child2">
-    <input type="text" value="0" id="p1ScoreLbl" class="inputScore">
-    <button class="button button2" onclick="scoringLeft('+')">+</button>
-    <button class="button button2" onclick="scoringLeft('-')">-</button></div>
+                <!-- <button class="button" onclick="updScoreLoc('+')">Score UP</button>
+                <button class="button" onclick="updScoreLoc('-')">Score Down</button>
+
+                <button class="button" onclick="updScoreLoc('+l')">left R</button>
+                <button class="button" onclick="updScoreLoc('-l')">left L</button>
+
+                <button class="button" onclick="updScoreLocR('+')">Score UP</button>
+                <button class="button" onclick="updScoreLocR('-')">Score Down</button>
+
+                <button class="button" onclick="updScoreLocR('+l')">right R</button>
+                <button class="button" onclick="updScoreLocR('-l')">right L</button>
+
+                <button class="button" onclick="resetHUD()">reset</button> -->
+
+                
+
+                <!-- <button class="button button1" onclick="LRScore('+')">right</button>
+                <button class="button button1" onclick="LRScore('-')">left</button> -->
+
+
+          
+            <!-- <p></p> -->
     
-    <div class="float-child2">
-    <input type="text" value="0" id="p2ScoreLbl" class="inputScore">
-    <button class="button button2" onclick="scoringRight('+')">+</button>
-    <button class="button button2" onclick="scoringRight('-')">-</button></div>
-           
-    <br>
-    <button class="button button1" onclick="updateBoth()">Update Both Scores</button>
+            
+            <!-- <p>color code for obs: #00ff00 or rgb (0,250,0)</p> -->
+            <!-- <p>-_-_-_-_-_-_-_-_-_-_-</p> -->
+        </div>
+
+        <div id="usePanel" class="float-child">
+          <a>Changer</a><br>
+          <a>----------------</a><br>
+          
+          <!-- <select name="player2" id="player2" class="wd2" onchange="updateName()">
+              <option value="">Right Player</option>
+          </select><br> -->
+          <div id="gameLbl">Games</div>
+          <select name="games" id="games" onchange="updateGame()">
+            <option value="0">Games | Default</option>
+            <option value="1">Smash Bros</option>
+            <option value="2">Tekken</option>
+            <option value="3">Custom</option>
+          </select>
+          <select name="baseColor" id="baseColor" onchange="updateOverlay('1')">
+          <option value="0">Base Color | Gray</option>
+          <option value="1">Purple</option>
+          <option value="2">Smash Bros</option>
+          <option value="3">Tekken</option>
+          <option value="4">Custom</option>
+          </select>
+
+          <select name="gameSelection" id="gameSelection" disabled onchange="updateOverlay('2')">
+            <option id="l01" value="0">Character Select</option>
+          </select>
+          <select name="gameSelection2" id="gameSelection2" disabled onchange="updateOverlay('3')">
+          <option id="r01" value="0">Character Select</option>
+          </select>
+
+          <div id="nameLbl">Names</div>
+          <select name="player1" id="player1" onchange="updateName()">
+            <option value="">Left Player</option>
+          </select> 
+          <select name="player2" id="player2" onchange="updateName()">
+          <option value="">Right Player</option>
+          </select>
+
+          <!-- positionBtn at 350? -->
+
+          
+
+          <div class="float-child2">
+          <input type="text" value="0" id="p1ScoreLbl" class="inputScore">
+          <button class="button button2" onclick="scoringLeft('+')">+</button>
+          <button class="button button2" onclick="scoringLeft('-')">-</button></div>
+          
+          <div class="float-child2">
+          <input type="text" value="0" id="p2ScoreLbl" class="inputScore">
+          <button class="button button2" onclick="scoringRight('+')">+</button>
+          <button class="button button2" onclick="scoringRight('-')">-</button></div>
+                 
+          <br>
+          <button class="button button1" onclick="updateBoth()">Update Both Scores</button>
+
+          <p></p>
+
+          <select name="rounds" id="rounds" class="wd2" onchange="updateRound()">
+              <option value="">Select Round</option>
+              <option value="Winners">Winners</option>
+              <option value="Losers">Losers</option>
+              <option value="1st Round">1st Round</option>
+              <option value="2nd Round">2nd Round</option>
+              <option value="3rd Round">3rd Round</option>
+              <option value="4th Round">4th Round</option>
+              <option value="5th Round">5th Round</option>
+              <!--<option value="3">Orange</option>-->
+          </select>
+          <!-- <p></p> -->
+          <button class="button button1" onclick="clearAll()">Clear All</button><br>
+      </div>
+    
+    </div>
 
     <p></p>
 
-    <select name="rounds" id="rounds" class="wd2" onchange="updateRound()">
-        <option value="">Select Round</option>
-        <option value="Winners">Winners</option>
-        <option value="Losers">Losers</option>
-        <option value="1st Round">1st Round</option>
-        <option value="2nd Round">2nd Round</option>
-        <option value="3rd Round">3rd Round</option>
-        <option value="4th Round">4th Round</option>
-        <option value="5th Round">5th Round</option>
-        <!--<option value="3">Orange</option>-->
-    </select>
-    <!-- <p></p> -->
-    <button class="button button1" onclick="clearAll()">Clear All</button><br>
-</div>
-</div>
-
-<div id="Info" class="tabcontent">
-  <h3>Info</h3>
-  <div id="setupPanel" style="background-color:#ffffff;">
-    <!-- <a>Setup</a><br>
-    <a>----------------</a><br> -->
-    <!-- <div id="gameLbl">Games</div> -->
-    <!-- <select name="games" id="games" onchange="updateGame()">
-        <option value="0">Games | Default</option>
-        <option value="1">Smash Bros</option>
-        <option value="2">Tekken</option>
-        <option value="3">Custom</option>
-    </select>
-    <select name="baseColor" id="baseColor">
-      <option value="0">Base Color | Gray</option>
-      <option value="1">Purple</option>
-      <option value="2">Smash Bros</option>
-      <option value="3">Tekken</option>
-      <option value="4">Custom</option>
-  </select> -->
-<!-- <button id="updateGame" onclick="updateGame()">Update Game</button>
-    <p></p> -->
-
-    <br>
-    <div id="characterSelectors"> 
-      <!-- style="display: none;" -->
-    <!-- <select name="gameSelection" id="gameSelection" disabled>
-        <option id="l01" value="0">Character Select</option>
-    </select>
-    <select name="gameSelection2" id="gameSelection2" disabled>
-      <option id="r01" value="0">Character Select</option>
-  </select> -->
-  </div>
     
-    <!-- <button class="button button1" id="updateOverlay" onclick="updateOverlay('1')">Update Overlay</button> -->
-    <p></p>
-
-    <div class="float-child2">
-    <textarea id="players" name="players" rows="5" cols="40">add names here. one per line.</textarea>
-  </div>
-  <div class="float-child2">
-    <textarea name="customURLs" id="customURLs" cols="40" rows="5">replace with custom urls. one per line.</textarea>
-  </div>
-        <button class="button button1" onclick="updatePlayers()">Update Players List</button>
-        <button class="button button1" onclick="updateCustom()">Update Custom</button>
-
-        
-
-        
-
-        <!-- <button class="button button1" onclick="LRScore('+')">right</button>
-        <button class="button button1" onclick="LRScore('-')">left</button> -->
 
 
-  
-    <!-- <p></p> -->
+<!-- <div id="hudLbl">HUD Below</div> -->
 
+   <!-- <div id="scoreCard">
+
+        <svg width="800" height="200">
+            <rect width="1000" height="200" style="fill:rgb(0,255,0);stroke-width:3;stroke:rgb(0,255,0)" />
+            <rect x="30" y="20" width="750" height="130" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,255,0)" />
+            
+            <text id="svgScore1" x="60" y="100" font-size="3em" fill="black">Test text</text>
+            <text id="svgScore2" x="400" y="100" font-size="3em" fill="black">Test text</text>
+            
+            Sorry, your browser does not support inline SVG.  
+          </svg>
+
+    </div> -->
     
-    <!-- <p>color code for obs: #00ff00 or rgb (0,250,0)</p> -->
-    <!-- <p>-_-_-_-_-_-_-_-_-_-_-</p> -->
-</div>
-</div>
 
-<div id="Setup" class="tabcontent">
-  <h3>Setup</h3>
-  <p>left</p>
-  <label>Score</label>
-        <button class="button" onclick="updScoreLoc('+')">Up</button>
-        <button class="button" onclick="updScoreLoc('-')">Down</button>
-        <button class="button" onclick="updScoreLoc('-l')">Left</button>
-        <button class="button" onclick="updScoreLoc('+l')">Right</button>
-        <button id="hideLScore" class="button" onclick="hideStuff('leftScore')">Hide</button><br>
-
-        <label>Name</label>
-        <button class="button" onclick="moveNameLeft('+')">Up</button>
-        <button class="button" onclick="moveNameLeft('-')">Down</button>
-        <button class="button" onclick="moveNameLeft('-l')">Left</button>
-        <button class="button" onclick="moveNameLeft('+l')">Right</button><br>
+<p></p>
 
 
-    <p>right</p>
-    <label>Score</label>
-        <button class="button" onclick="updScoreLocR('+')">Up</button>
-        <button class="button" onclick="updScoreLocR('-')">Down</button>
-        <button class="button" onclick="updScoreLocR('-l')">Left</button>
-        <button class="button" onclick="updScoreLocR('+l')">Right</button><br>
-
-        <label>Name</label>
-        <button class="button" onclick="moveNameRight('+')">Up</button>
-        <button class="button" onclick="moveNameRight('-')">Down</button>
-        <button class="button" onclick="moveNameRight('+l')">Left</button>
-        <button class="button" onclick="moveNameRight('-l')">Right</button><br><br>
-
-        <label>Round</label>
-        <button class="button" onclick="moveRound('+')">Up</button>
-        <button class="button" onclick="moveRound('-')">Down</button>
-        <button class="button" onclick="moveRound('-l')">Left</button>
-        <button class="button" onclick="moveRound('+l')">Right</button><br>
-
-
-
-        <button class="button" onclick="resetHUD()">Reset</button>
-</div>
-
-
-<!-- score hud -->
+<a id="hudddd">HUD for OBS || color code for green in obs: #00ff00 or rgb (0,250,0)</a><br>
 <div class="container" style="background-color:#00ff00;">
     
-    <div class="img" style="background-color:#00ff00;">
-      <img id="scoreHud" src="https://i.imgur.com/Yyt4Mzl.png" alt="banner" style="width:100%;">
-    </div>
-  
-    <div class="img2" >
-      <img id="characterLeft" src="https://i.imgur.com/EVMPi3J.png" alt="Left" style="width:100%;">
-    </div>
-  
-    <div class="img3" >
-      <img id="characterRight" src="https://i.imgur.com/EVMPi3J.png" alt="Right" style="width:100%;">
-    </div>
-      <!-- <img id="scoreHud" src="https://i.imgur.com/z11bv0U.png" alt="Snow" style="width:100%;"> -->
-      <div id="leftScore" class="left-score" value="hide">0</div>
-      <div id="leftName" class="top-left">Player 1</div>
-      <div id="rightName" class="top-right">Player 2</div>
-      <div id="rightScore" class="right-score">0</div>
-      <div id="round" class="centered">Round</div>
-    </div>
+  <div class="img" style="background-color:#00ff00;">
+    <img id="scoreHud" src="https://i.imgur.com/Yyt4Mzl.png" alt="banner" style="width:100%;">
+  </div>
+
+  <div class="img2" >
+    <img id="characterLeft" src="https://i.imgur.com/EVMPi3J.png" alt="Left" style="width:100%;">
+  </div>
+
+  <div class="img3" >
+    <img id="characterRight" src="https://i.imgur.com/EVMPi3J.png" alt="Right" style="width:100%;">
+  </div>
+    <!-- <img id="scoreHud" src="https://i.imgur.com/z11bv0U.png" alt="Snow" style="width:100%;"> -->
+    <div id="leftScore" class="left-score">0</div>
+    <div id="leftName" class="top-left">Player 1</div>
+    <div id="rightName" class="top-right">Player 2</div>
+    <div id="rightScore" class="right-score">0</div>
+    <div id="round" class="centered">Round</div>
+  </div>
+
 
 <script>
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-
-var ddddd = "hide";
-function hideStuff(stuffs){
-    var flagg = document.getElementById(stuffs);
-    if(ddddd == "hide"){
-        flagg.style.display = "none";
-        document.getElementById('hideLScore').innerHTML = "ddkdkdkd";
-        hideLScore
-
-    }else{
-    flagg.style.display = "active";
-    }
-}
-
-
-//original code
-
 
 
 //extra button variables
@@ -964,118 +939,27 @@ function updScoreLocR(upDown){
   x.style = topValString;
 }
 
-nameValTop = 8;
-nameValLeft = 16;
 
-function moveNameLeft(upDown){
-
-  if (upDown == '+'){
-    nameValTop = nameValTop - 1;
-  } else if (upDown == '-'){
-    nameValTop = nameValTop + 1;
-  } else if (upDown == '+l'){
-    nameValLeft = nameValLeft + 0.5;
-  } else if (upDown == '-l'){
-    nameValLeft = nameValLeft - 0.5;
-  }
-
-  topValString = 'top: ' + nameValTop.toString() + 'px; left: ' + nameValLeft + '%;';
-  var x = document.getElementById("leftName");
-  x.style = topValString;
-}
-
-
-nameValTopRight = 8;
-nameValRight = 16;
-
-function moveNameRight(upDown){
-
-  if (upDown == '+'){
-    nameValTopRight = nameValTopRight - 1;
-  } else if (upDown == '-'){
-    nameValTopRight = nameValTopRight + 1;
-  } else if (upDown == '+l'){
-    nameValRight = nameValRight + 0.5;
-  } else if (upDown == '-l'){
-    nameValRight = nameValRight - 0.5;
-  }
-
-  topValString = 'top: ' + nameValTopRight.toString() + 'px; right: ' + nameValRight + '%;';
-  var x = document.getElementById("rightName");
-  x.style = topValString;
-}
-
-
-
-roundValTop = 10;
-roundVal = 50;
-
-function moveRound(upDown){
-
-  if (upDown == '+'){
-    roundValTop = roundValTop - 1;
-  } else if (upDown == '-'){
-    roundValTop = roundValTop + 1;
-  } else if (upDown == '+l'){
-    roundVal = roundVal + 0.5;
-  } else if (upDown == '-l'){
-    roundVal = roundVal - 0.5;
-  }
-
-  topValString = 'top: ' + roundValTop.toString() + 'px; left: ' + roundVal + '%;';
-  var x = document.getElementById("round");
-  x.style = topValString;
-}
-
-
-//top: 8px;
-//left: 16%;
 
 function resetHUD(){
 
-    //score
   topVal = 10;
   leftVal = 40;
+
+  topValR = 10;
+  rightVal = 40;
 
   topValString = 'top: ' + topVal.toString() + 'px; left: ' + leftVal + '%;';
   var x = document.getElementById("leftScore");
   x.style = topValString;
 
-  topValR = 10;
-  rightVal = 40;
-
   topValString2 = 'top: ' + topValR.toString() + 'px; right: ' + rightVal + '%;';
   var y = document.getElementById("rightScore");
   y.style = topValString2;
 
-  //names
-
-  nameValTop = 8;
-    nameValLeft = 16;
-    topValString = 'top: ' + nameValTop.toString() + 'px; left: ' + nameValLeft + '%;';
-  var z = document.getElementById("leftName");
-  z.style = topValString;
-
-  nameValTopRight = 8;
-    nameValRight = 16;
-    topValString = 'top: ' + nameValTopRight.toString() + 'px; right: ' + nameValRight + '%;';
-  var x = document.getElementById("rightName");
-  x.style = topValString;
-
-  //Round
-
-  roundValTop = 10;
-    roundVal = 50;
-  topValString = 'top: ' + roundValTop.toString() + 'px; left: ' + roundVal + '%;';
-  var x = document.getElementById("round");
-  x.style = topValString;
-
 }
 
-
-
-
 </script>
-   
+
 </body>
-</html> 
+</html>

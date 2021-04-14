@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Crash Game</title>
+</head>
+<body>
+
+<h1>Crash Game</h1>
+<!-- <p>This is a paragraph.</p> -->
+<label>reseting in: </label>
+<label id='resetTimer'class="betText2">5</label><br>
+
+<label>top muliplier: </label>
+<label id='multiplier' class="betText">0.00</label>
+<br>
+
+
+<!-- <label id='payout1'>0.00</label> -->
+
+
+<div id="payoutPanel">
+
+    <label>multiplier: </label>
+  <label id='multiplier3'class="betText2">0.00</label><br>
+  <label>final multi: </label>
+  <label id='payout1'>0.00</label><br>
+  <label>final cashout: </label>
+  <label id='payout2'>0.00</label>
+</div>
+
+<div>
+    <label>user bet: </label>
+    <input type="text" id="userBet" value="1"><br>
+    <label>multiplier cashout: </label>
+    <input type="text" id="autoCash" value="2">
+</div>
+
+<div id="userPanel">
+  <!-- <button id="betCash" onclick="bet()" class="betBtn">bet</button> -->
+  <button id="betCash" onclick="startCrash()" class="betBtn">start</button>
+  <button id="stopBet" onclick="betStop()" class="betBtn">stop</button>
+  <button id="betReset" onclick="userBetChg()" class="betBtn">testBtn</button>
+</div>
+
+
+
+<script>
+
+    var bulFlag = true;
+    resetFlag = false;
+    var payout1 = 0;
+    var deccc = 0;
+    var counter = 0
+    var resetCounter = 5;
+
+    function userBetChg(){
+        document.getElementById("userBet").value = '3';
+    }
+
+    function randomMultiplier(){
+        randomNumber = Math.floor((Math.random() * 1000) + 1);
+      document.getElementById("multiplier").innerHTML = randomNumber*.010.toString();
+    
+      
+      return randomNumber;
+
+    }
+    
+    function bet(){
+        payoutTotal = randomMultiplier();
+        // var counter = 0;
+
+      setInterval( function(){
+        counter++;
+    
+        if(counter <= payoutTotal && bulFlag == true){
+          id = document.getElementById("multiplier3");
+          deccc = counter*.010;
+          id.innerHTML = deccc.toFixed(2)
+          payout1 = deccc;
+          if(deccc*100 == payoutTotal){payOut()}
+        }
+      }, 80);
+    }
+
+    function startCrash(){
+
+        payoutTotal = randomMultiplier();
+
+        setInterval( function(){
+        counter++;
+    
+        if(counter <= payoutTotal && bulFlag == true && resetFlag == false){
+          id = document.getElementById("multiplier3");
+          deccc = counter*.010;
+          id.innerHTML = deccc.toFixed(2)
+        //   payout1 = deccc;
+        //   if(deccc*100 == payoutTotal){payOut()}
+            if(deccc*100 == payoutTotal){
+                resetFlag = true;
+                resetTimer();
+                document.getElementById("stopBet").disabled = false;
+                payoutTotal = randomMultiplier();
+                betReset();
+                // startCrash();
+                
+            }
+        }
+      }, 80);
+
+    }
+
+    function resetTimer(){
+        setInterval( function(){
+        resetCounter--;
+        if(resetCounter < 5 && resetFlag == true){
+          id2 = document.getElementById("resetTimer");
+          deccc2 = resetCounter;
+          id2.innerHTML = deccc2;
+          if(resetCounter <= 0){
+            resetCounter = 5;
+            resetFlag = false;            
+          }
+        }
+      }, 1000);
+    }
+    
+    function betStop(){
+    //   bulFlag = false;
+    //   payOut();
+        var payOutHTML = document.getElementById("multiplier3").textContent;
+        document.getElementById("payout1").innerHTML = payOutHTML;
+        var finalMulti = parseInt(payOutHTML);
+        var finalPay = finalMulti * 2;
+        document.getElementById("payout2").innerHTML = finalPay.toString();
+        document.getElementById("stopBet").disabled = true;
+        
+    }
+    
+    function payOut(){
+      document.getElementById("multiplier3").innerHTML = '0.00';
+      document.getElementById("payout1").innerHTML = payout1.toString()
+    }
+
+    function betReset(){
+
+        // var bulFlag = true;
+        payout1 = 0;
+        deccc = 0;
+        counter = 0
+        resetCounter = 5;
+
+    }
+        
+    </script>
+
+</body>
+</html> 
