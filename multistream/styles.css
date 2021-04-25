@@ -1,0 +1,115 @@
+@font-face{
+    font-family: "jofferyFont";
+    src: url("InYourFaceJoffrey.woff") format("woff"), url("InYourFaceJoffrey.tff") format("truetype");
+}
+
+label{
+    color: rgb(255, 255, 255);
+    /* font-family: jofferyFont; */
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  ul.nav {
+    margin:0;
+    padding:0;
+    list-style:none;
+    height:36px; line-height:36px;
+    background:#000000; 
+    /* font-family:Arial, Helvetica, sans-serif; */
+    /* font-family: jofferyFont; */
+    font-size:20px;
+    letter-spacing: 1px;
+    }
+    ul.nav li {
+        border-right:1px solid #ffffff; 
+        float:left;
+    }
+    ul.nav a {
+        display:block;
+        padding:0 28px;
+        color:#ffffff;
+        text-decoration:none;
+    }
+    ul.nav a:hover,
+    ul.nav li.current a {
+        background:#7c7c7c;
+    }
+
+    .navLogo{
+        position: relative;
+        float: right;
+        display: inline-block;
+        vertical-align: bottom;
+        /* right: 0px; */
+        top: 2px;
+
+        height: 33px;
+    }
+
+    .keep-aspect {
+      position: relative;
+      height: 0;
+     /* height / width * 100% = 315 / 560 * 100% = 56.25% */
+      /* padding-top: 56.25%; */
+      
+      border: 3px solid #fff;
+       /* padding: 10px; */
+       width: 24%;
+       padding-top: 12.25%;
+       float: left;
+       /* padding: 10px; */
+       border: 2px solid #383838;
+   }
+   
+   iframe {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+   }
+
+   p{
+       color: white;
+       /* font-family: jofferyFont; */
+       letter-spacing: 1px;
+       font-size: 18px;
+       font-weight: bold;
+       text-align: center;
+   }
+
+   select{
+    /* font-family: jofferyFont; */
+    letter-spacing: 2px;
+    font-size: 18px;
+    width: 20%;     
+   }
+   option{
+    /* font-family: jofferyFont; */
+    letter-spacing: 2px;
+    font-size: 18px;
+   }
+   button{
+    /* font-family: jofferyFont; */
+    letter-spacing: 2px;
+    font-size: 18px;
+    width: 30%;
+    
+   }
+
+   .updateBtn{
+       width: 50%;
+   }
+
+   .settingPanel{
+    text-align: center;
+       width: 30%;
+       /* width: fit-content; */
+       /* background-color: rgb(95, 95, 95); */
+       margin: 0 auto;
+       /* border: 2px black; */
+       border: 2px solid #000000;
+       border-radius: 5px;
+       padding: 5px;
+   }
